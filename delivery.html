@@ -1,132 +1,626 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BEBESTIBLES — NIKKEI 419</title>
 
-<title>Delivery | NIKKEI 419</title>
+  <!-- Fuente branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+  :root{
+    --bg:#0a0a0a;
+    --card:#121212;
+    --line:#1f1f1f;
+    --text:#f5f5f5;
+    --muted:#cfcfcf;
+    --accent:#9C222A;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --radius:16px;
+  }
 
-<style>
-:root{
-  --bg:#0a0a0a;
-  --card:#111;
-  --line:#1f1f1f;
-  --text:#ffffff;
-  --muted:#bdbdbd;
-  --accent:#9C222A; /* rojo vino */
-  --radius:18px;
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* TÍTULOS GENERALES */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(240,185,11,0.18); /* brillo dorado sutil */
+  }
+.subcat {
+  margin: 32px 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent); /* tu rojo vino */
+  text-transform: uppercase;
+  letter-spacing: .8px;
 }
 
-/* Reset */
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
-}
-a{text-decoration:none;color:inherit}
+  /* TARJETAS FULL WIDTH SI LAS USAS EN OTROS LUGARES */
+  .dish-card, .item-card {
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto 14px;
+  }
 
-/* ===== HEADER SIMPLE ===== */
-.header{
-  position:sticky;
-  top:0;
-  background:rgba(10,10,10,.85);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.header-wrap{
-  max-width:900px;
-  margin:auto;
-  padding:16px;
-  display:flex;
-  justify-content:center;
-}
-.header h1{
-  font-family:'Cinzel',serif;
-  font-size:20px;
-  letter-spacing:3px;
-  margin:0;
-  color:var(--accent);
-}
+  /* TÍTULOS DE SECCIÓN CON PALITO AMARILLO */
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 28px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #f5f5f5;
+    letter-spacing: 1px;
+  }
+  .section-title::before {
+    content: "";
+    width: 6px;
+    height: 28px;
+    background: #9C222A;
+    border-radius: 3px;
+  }
 
-/* ===== DELIVERY ===== */
-.delivery{
-  max-width:900px;
-  margin:0 auto;
-  padding:48px 16px;
-}
-
-.delivery-title{
-  text-align:center;
-  font-family:'Cinzel',serif;
-  font-size:24px;
-  letter-spacing:4px;
-  margin-bottom:10px;
+ /* Top bar */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  height: 60px; /* ← hace más alta toda la barra */
+  display: flex;
+  align-items: center; /* centra todo verticalmente */
 }
 
-.delivery-sub{
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:36px;
+/* Contenedor interno */
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px; /* ← más ancho a los lados */
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  height: 100%; /* ← se adapta a la altura de . */
 }
 
-/* GRID */
-.delivery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+
+/* BOTÓN DE MENÚ (3 líneas) */
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;                /* tamaño base escritorio */
+  height: 44px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.35); /* borde tenue */
+  background: #0f0f0f;
+  color: #ffffff;
+
+  font-size: 24px;            /* tamaño del símbolo ☰ */
+  line-height: 1;             /* centra verticalmente */
+  padding: 0;
+
+  cursor: pointer;
+  opacity: 0.95;
+  transition: 0.2s;
 }
 
-/* CARD */
-.delivery-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:26px 20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:14px;
-  text-align:center;
-  transition:.25s;
-  box-shadow:0 10px 30px rgba(0,0,0,.45);
+.menu-icon:hover {
+  background: #1a1a1a;
+  border-color: #f0b90b;
+  color: #f0b90b;
 }
 
-.delivery-card:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent);
-  box-shadow:0 14px 38px rgba(156,34,42,.35);
-}
 
-/* ICON */
-.delivery-icon{
-  font-size:42px;
-}
+  /* FIX SOLO PARA CELULAR (alinear ☰ exactamente al centro) */
+@media (max-width:640px){
 
-/* TEXT */
-.delivery-card h3{
-  margin:0;
-  font-size:18px;
-}
-.delivery-card p{
-  margin:0;
-  font-size:14px;
-  color:var(--muted);
-}
+  .menu-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+     position: relative;
+    top: -2px;     /* súbelo 1 o 2px según prefieras */
 
-/* MOBILE */
-@media (max-width:720px){
-  .delivery-grid{
-    grid-template-columns:1fr;
+    width: 54px !important;     /* tamaño proporcional */
+    height: 54px !important;
+
+    font-size: 30px !important; /* tamaño del ícono */
+    line-height: 0 !important;  /* evita que suba/baje */
+
+    padding: 0 !important;
   }
 }
-</style>
-</head>
 
+
+/* Drawer (menú móvil) igual al index */
+.drawer {
+  display: none;
+}
+.drawer.open {
+  display: block;
+}
+.drawer .sheet {
+  border-top: 1px solid #1c1c1c;
+  background: #0e0e0e;
+}
+.drawer a {
+  display: block;
+  padding: 14px 20px;
+  border-bottom: 1px solid #161616;
+  color: #ffffff;
+}
+
+
+.center-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tamaño del logo en general (mobile) */
+.center-logo img {
+  height: 48px;      /* alto del logo */
+  width: auto;       /* mantiene proporción */
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Un poco más grande en pantallas grandes */
+@media (min-width: 768px) {
+  .center-logo img {
+    height: 52px;
+  }
+}
+
+  }
+
+/* Contenedor del botón */
+.back-icon {
+  font-size: 32px;
+  font-weight: 350;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: .2s;
+  padding: 0;
+
+  /* TRUCO: alineación perfecta de ambos caracteres */
+  line-height: 0.85;
+}
+
+/* Flecha + corchete alineados */
+.back-arrow,
+.back-bracket {
+  display: inline-block;
+  line-height: 0.85;
+  vertical-align: middle;
+}
+
+/* Ajuste milimétrico */
+.back-arrow {
+  position: relative;
+  top: 1px;
+  font-size: 26px;/* baja la flecha para centrar */
+}
+
+.back-bracket {
+  position: relative;
+  top: -1px;    /* sube un poco el corchete */
+}
+
+.back-icon:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Versión móvil */
+@media (max-width:640px){
+  .back-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;        /* un poquito más grande */
+  }
+}
+
+
+
+  /* Page */
+  .page{
+    max-width:1200px;
+    margin:0 auto;
+    padding:14px 16px 32px;
+  }
+  h1{font-size:26px;margin:10px 0 4px}
+  .sub{color:var(--muted);margin:0 0 14px;font-size:14px}
+
+  /* BUSCADOR DESPLEGABLE */
+  .search-box-hidden {
+    display: none;
+    padding: 10px 16px;
+  }
+
+  .search-input-full {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: #121212;
+    color: #fff;
+  }
+
+  /* BARRA DE CATEGORÍAS TIPO LA BIRRA */
+  .categories-bar {
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  /* Lupa minimal fija */
+  .search-icon-min {
+    font-size: 18px;
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: .85;
+    transition: .2s;
+  }
+  .search-icon-min:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+
+  /* Scroll horizontal de categorías */
+  .categories-scroll {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-right: 10px;
+    scrollbar-width: none;
+  }
+  .categories-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Textos blancos, sin fondo, para categorías */
+  .cat-item {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .2s;
+    opacity: 0.8;
+  }
+  .cat-item:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+  .cat-item.active {
+    opacity: 1;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Secciones */
+  .list{display:grid;gap:12px}
+
+  /* Cards */
+  .card{
+    position:relative;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:12px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .card:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+    box-shadow:0 14px 40px rgba(0,0,0,.55);
+  }
+
+  .photo{
+    height:100px;
+    background:#151515;
+  }
+  .photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .body{
+    padding:10px 12px 14px 12px;   /* un poquito más abajo */
+    padding-right: 80px;           /* espacio para que el texto no se choque con el precio */
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:6px;
+    align-items:flex-start;
+  }
+
+  .title{
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:6px;
+  }
+  .desc{
+    color:var(--muted);
+    margin:2px 0 0;
+    font-size:13px;
+  }
+  .meta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-self:end;
+  }
+
+  .price {
+    position: absolute;
+    bottom: 8px;        /* pegado al borde inferior */
+    right: 12px;        /* pegado al borde derecho */
+    font-size: 17px;
+    font-weight: 700;
+    color: #9C222A;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.3px;
+  }
+  .price::before{
+    content:"$";
+  }
+
+  .add{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--accent);
+    color:#111;
+    background:var(--accent);
+    font-weight:900;
+    font-size:16px;
+    cursor:pointer;
+  }
+  .add:active{transform:scale(.95)}
+
+@media (max-width:640px){
+
+  /* Imagen y ancho del card un poco más pequeños */
+  .card {
+    grid-template-columns: 125px 1fr; /* antes 140 → ahora 125 */
+    min-height: 145px;                /* antes 160 → ahora 145 */
+    padding: 0;
+  }
+
+  /* Imagen más baja */
+  .photo {
+    height: 145px; /* antes 160 → ahora 145 */
+  }
+
+  /* Texto más ajustado */
+  .body {
+    padding: 12px 14px 16px 14px; /* más compacto */
+  }
+
+  /* Título levemente más pequeño */
+  .title {
+    font-size: 15px; /* antes 16 */
+  }
+
+  /* Descripción */
+  .desc {
+    font-size: 13.5px; /* antes 14 */
+  }
+
+  /* Precio más proporcionado */
+  .price {
+    font-size: 17px; /* antes 18 */
+    bottom: 10px;
+    right: 14px;
+  }
+}
+
+
+
+
+  /* Modal con carrusel */
+  .modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+  }
+  .modal.open{display:flex}
+  .modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.75);
+  }
+  .modal-card{
+    position:relative;
+    background:#101010;
+    border-radius:20px;
+    border:1px solid var(--line);
+    max-width:420px;
+    width:90%;
+    max-height:90vh;
+    overflow-y:auto;
+    box-shadow:0 18px 60px rgba(0,0,0,.8);
+  }
+  .carousel{position:relative}
+  .modal-img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:20px 20px 0 0;
+  }
+  .car-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    width:32px;
+    height:32px;
+    border-radius:999px;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    font-size:20px;
+    z-index:3;
+  }
+  .car-btn.left{left:10px}
+  .car-btn.right{right:10px}
+  .dots{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:6px 0 4px;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+    border-radius:999px;
+    background:#444;
+  }
+  .dot.active{background:var(--accent)}
+
+  .modal-body{padding:16px}
+  .modal-title{font-size:20px;margin:0 0 4px}
+  .modal-cat{
+    font-size:12px;
+    color:var(--muted);
+    margin:0 0 10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .modal-desc{
+    font-size:14px;
+    color:var(--muted);
+    margin:0 0 8px;
+  }
+  .modal-detail{
+    font-size:14px;
+    margin:0 0 10px;
+  }
+  .modal-price{
+    font-weight:800;
+    font-size:16px;
+    margin:4px 0 10px;
+  }
+  .modal-price::before{content:"$"}
+
+  .modal-close{
+    position:absolute;
+    top:8px;
+    right:10px;
+    border:none;
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    font-size:20px;
+    border-radius:999px;
+    width:30px;
+    height:30px;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    z-index:4;
+  }
+    /* FOOTER IGUAL AL DE INDEX */
+footer{
+  border-top:1px solid #1b1b1b;
+  background:#0a0a0a;
+}
+
+.footer{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px 20px;
+  display:grid;
+  gap:14px;
+}
+
+.foot-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.foot-small{
+  color:#9f9f9f;
+  font-size:13px;
+}
+
+.ig{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid #232323;
+  background:#121212;
+}
+
+.addr{
+  color:#d9d9d9;
+}
+
+.map{
+  color:#9f9f9f;
+  text-decoration:underline;
+}
+
+</style>
+
+</head>
 <body>
 
 <header class="header">
@@ -166,6 +660,286 @@ a{text-decoration:none;color:inherit}
   </div>
 
 </main>
+
+</body>
+</html>
+  <!-- SCRIPTS -->
+ <script>
+  // =============================
+  // SECCIONES + BUSCADOR
+  // =============================
+  const openSearch  = document.getElementById('openSearch');
+  const searchBox   = document.getElementById('searchBox');
+  const searchInput = document.getElementById('search');
+  const cards       = Array.from(document.querySelectorAll('.card'));
+  const sections    = Array.from(document.querySelectorAll('main section'));
+
+  // Al cargar: solo APPETIZER visible
+  sections.forEach(sec => {
+    if (sec.id !== 'appetizer') sec.style.display = 'none';
+  });
+
+  function mostrarSeccion(id) {
+    sections.forEach(sec => {
+      sec.style.display = (sec.id === id ? '' : 'none');
+    });
+  }
+
+  // Abrir / cerrar cuadro de búsqueda al tocar la lupa
+  if (openSearch && searchBox) {
+    openSearch.addEventListener('click', () => {
+      const visible = searchBox.style.display === 'block';
+      searchBox.style.display = visible ? 'none' : 'block';
+      if (!visible && searchInput) {
+        searchInput.focus();
+      }
+    });
+  }
+
+  // Búsqueda de platos
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+
+      if (q.length > 0) {
+        // Mientras se busca, mostrar todas las secciones
+        sections.forEach(sec => sec.style.display = '');
+      } else {
+        // Sin texto: volvemos a la categoría activa
+        const activeCat = document.querySelector('.cat-item.active');
+        if (activeCat && activeCat.dataset.target) {
+          mostrarSeccion(activeCat.dataset.target);
+        }
+      }
+
+      cards.forEach(card => {
+        const name   = (card.dataset.name || '').toLowerCase();
+        const descEl = card.querySelector('.desc');
+        const desc   = descEl ? descEl.textContent.toLowerCase() : '';
+        const match  = !q || name.includes(q) || desc.includes(q);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  }
+
+  // =============================
+  // CATEGORÍAS (barra tipo La Birra)
+  // =============================
+  const catItems = document.querySelectorAll('.cat-item');
+
+  catItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // estado activo visual
+      catItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // mostrar solo la sección correspondiente
+      const id = item.dataset.target;
+      if (id) {
+        mostrarSeccion(id);
+      }
+
+      // volver arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // limpiar búsqueda y mostrar todas las cards
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      cards.forEach(card => card.style.display = '');
+    });
+  });
+
+  // =============================
+  // MODAL + CARRUSEL
+  // =============================
+  const modal       = document.getElementById('modal');
+  const modalImg    = document.getElementById('modalImg');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalCat    = document.getElementById('modalCat');
+  const modalDesc   = document.getElementById('modalDesc');
+  const modalDetail = document.getElementById('modalDetail');
+  const modalPrice  = document.getElementById('modalPrice');
+  const modalClose  = document.getElementById('modalClose');
+  const carPrev     = document.getElementById('carPrev');
+  const carNext     = document.getElementById('carNext');
+  const dotsContainer = document.getElementById('dots');
+
+  let currentImages = [];
+  let currentIndex  = 0;
+
+  function renderCarousel(){
+    if (!currentImages.length || !modalImg) return;
+    modalImg.src = currentImages[currentIndex];
+
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    currentImages.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === currentIndex ? ' active' : '');
+      d.addEventListener('click', () => {
+        currentIndex = i;
+        renderCarousel();
+      });
+      dotsContainer.appendChild(d);
+    });
+  }
+
+  function openModalFromCard(card){
+    if (!modal) return;
+
+    const name   = card.dataset.name || card.querySelector('.title')?.textContent || '';
+    const cat    = card.dataset.category || '';
+    const desc   = card.querySelector('.desc')?.textContent || '';
+    const detail = card.dataset.detail || '';
+    const price  = card.querySelector('.price')?.textContent || '';
+
+    currentImages = [card.dataset.img1, card.dataset.img2, card.dataset.img3].filter(Boolean);
+    currentIndex  = 0;
+    renderCarousel();
+
+    if (modalTitle)  modalTitle.textContent  = name;
+    if (modalCat)    modalCat.textContent    = cat;
+    if (modalDesc)   modalDesc.textContent   = desc;
+    if (modalDetail) modalDetail.textContent = detail;
+    if (modalPrice)  modalPrice.textContent  = price;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  // Abrir modal al hacer click en una card (excepto botón +)
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.add')) return; // el + no abre modal
+      openModalFromCard(card);
+    });
+  });
+
+  function closeModal(){
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  // Cerrar con la X
+  if (modalClose) {
+    modalClose.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      closeModal();
+    });
+  }
+
+  // Cerrar clic en fondo oscuro
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Carrusel: anterior / siguiente
+  function goPrev(){
+    if (!currentImages.length) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    renderCarousel();
+  }
+
+  function goNext(){
+    if (!currentImages.length) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    renderCarousel();
+  }
+
+  if (carPrev) {
+    carPrev.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      goPrev();
+    });
+  }
+
+  if (carNext) {
+    carNext.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      goNext();
+    });
+  }
+
+  // Swipe en celular (deslizar imagen)
+  let touchStartX = 0;
+  let touchEndX   = 0;
+
+  if (modalImg) {
+    modalImg.addEventListener('touchstart', (e) => {
+      if (!e.touches || !e.touches.length) return;
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    modalImg.addEventListener('touchend', (e) => {
+      if (!e.changedTouches || !e.changedTouches.length) return;
+      touchEndX = e.changedTouches[0].clientX;
+      const diff = touchEndX - touchStartX;
+
+      const threshold = 40;
+      if (Math.abs(diff) > threshold) {
+        if (diff < 0) {
+          goNext();   // swipe izquierda → siguiente
+        } else {
+          goPrev();   // swipe derecha → anterior
+        }
+      }
+    }, { passive: true });
+  }
+</script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+  <footer role="contentinfo">
+    <div class="footer">
+      <div class="foot-row">
+        <a class="ig" href="https://instagram.com/nikkei419" target="_blank" rel="noopener">
+          <span>📸 Instagram</span>
+          <strong>@nikkei419</strong>
+        </a>
+        <div class="addr">
+          <strong>Dirección:</strong>
+          <a class="map"
+             href="https://maps.google.com/?q=San+Martin+421,+Viña+del+Mar,+Chile"
+             target="_blank" rel="noopener">
+            San Martín 421, Viña del Mar, Chile
+          </a>
+        </div>
+      </div>
+      <div class="foot-row">
+        <span class="foot-small">© <span id="year"></span> <span class="nikkei">NIKKEI 419</span>. Todos los derechos reservados.</span>
+        <span class="foot-small">Restaurante Nikkei en Viña del Mar, Chile.</span>
+      </div>
+    </div>
+  </footer>
+  <script>
+  const burger = document.getElementById('menu-btn');
+  const drawer = document.getElementById('drawer');
+
+  function toggleDrawer(force) {
+    const open = typeof force === 'boolean'
+      ? force
+      : !drawer.classList.contains('open');
+
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+  }
+
+  burger.addEventListener('click', () => toggleDrawer());
+  window.addEventListener('hashchange', () => toggleDrawer(false));
+</script>
+
 
 </body>
 </html>
