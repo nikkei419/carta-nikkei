@@ -163,39 +163,41 @@
       text-transform:uppercase;
     }
 
-    /* ===== Slider Banner (corregido) ===== */
-    .slider{
-      position:relative;
-      overflow:hidden;
-      height:320px;           /* móvil */
-      border-radius:18px;
-    }
-    @media (min-width: 640px){
-      .slider{ height:260px; } /* desktop/tablet */
-    }
+/* ===== Slider Banner (4 imágenes, sin recorte) ===== */
+.slider{
+  position:relative;
+  overflow:hidden;
+  height:260px;           /* móvil */
+  border-radius:18px;
+}
+@media (min-width: 640px){
+  .slider{ height:320px; } /* desktop/tablet */
+}
 
-    .slides{
-      display:flex;
-      width:300%;
-      animation: slide 15s infinite;
-    }
-    .slides img{
-      width:100%;
-      flex-shrink:0;
-      object-fit:contain;
-      background:#0a0a0a;
-    }
+.slides{
+  display:flex;
+  width:400%;              /* ✅ 4 imágenes */
+  height:100%;
+  animation: slide4 20s infinite;
+}
 
-    @keyframes slide {
-      0%   { transform: translateX(0%); }
-      33%  { transform: translateX(0%); }
+.slides img{
+  width:25%;               /* ✅ 100/4 */
+  height:100%;             /* ✅ clave */
+  flex-shrink:0;
+  object-fit:contain;      /* ✅ NO recorta */
+  object-position:center;
+  background:#0a0a0a;      /* ✅ correcto */
+}
 
-      38%  { transform: translateX(-100%); }
-      66%  { transform: translateX(-100%); }
+/* Animación para 4 imágenes */
+@keyframes slide4{
+  0%, 20%   { transform: translateX(0%); }
+  25%, 45%  { transform: translateX(-25%); }
+  50%, 70%  { transform: translateX(-50%); }
+  75%, 100% { transform: translateX(-75%); }
+}
 
-      71%  { transform: translateX(-200%); }
-      100% { transform: translateX(-200%); }
-    }
   </style>
 </head>
 
@@ -340,6 +342,7 @@
   </script>
 </body>
 </html>
+
 
 
 
