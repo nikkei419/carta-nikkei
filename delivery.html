@@ -1,1 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Delivery | NIKKEI 419</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#111;
+  --line:#1f1f1f;
+  --text:#ffffff;
+  --muted:#bdbdbd;
+  --accent:#9C222A; /* rojo vino */
+  --radius:18px;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== HEADER SIMPLE ===== */
+.header{
+  position:sticky;
+  top:0;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-wrap{
+  max-width:900px;
+  margin:auto;
+  padding:16px;
+  display:flex;
+  justify-content:center;
+}
+.header h1{
+  font-family:'Cinzel',serif;
+  font-size:20px;
+  letter-spacing:3px;
+  margin:0;
+  color:var(--accent);
+}
+
+/* ===== DELIVERY ===== */
+.delivery{
+  max-width:900px;
+  margin:0 auto;
+  padding:48px 16px;
+}
+
+.delivery-title{
+  text-align:center;
+  font-family:'Cinzel',serif;
+  font-size:24px;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+.delivery-sub{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:36px;
+}
+
+/* GRID */
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+/* CARD */
+.delivery-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  text-align:center;
+  transition:.25s;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+.delivery-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 14px 38px rgba(156,34,42,.35);
+}
+
+/* ICON */
+.delivery-icon{
+  font-size:42px;
+}
+
+/* TEXT */
+.delivery-card h3{
+  margin:0;
+  font-size:18px;
+}
+.delivery-card p{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* MOBILE */
+@media (max-width:720px){
+  .delivery-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-wrap">
+    <h1>NIKKEI 419</h1>
+  </div>
+</header>
+
+<main class="delivery">
+
+  <div class="delivery-title">DELIVERY</div>
+  <div class="delivery-sub">Elige tu plataforma y pide directo</div>
+
+  <div class="delivery-grid">
+
+    <!-- UBER EATS -->
+    <a class="delivery-card" href="https://www.ubereats.com" target="_blank">
+      <div class="delivery-icon">🍣</div>
+      <h3>Uber Eats</h3>
+      <p>Pide desde la app</p>
+    </a>
+
+    <!-- RAPPI -->
+    <a class="delivery-card" href="https://www.rappi.com" target="_blank">
+      <div class="delivery-icon">🛵</div>
+      <h3>Rappi</h3>
+      <p>Entrega rápida</p>
+    </a>
+
+    <!-- WHATSAPP -->
+    <a class="delivery-card" href="https://wa.me/56912345678" target="_blank">
+      <div class="delivery-icon">💬</div>
+      <h3>WhatsApp</h3>
+      <p>Pedido directo</p>
+    </a>
+
+  </div>
+
+</main>
+
+</body>
+</html>
