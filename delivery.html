@@ -9,267 +9,399 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0a0a0a;
-      --card:#121212;
-      --line:#1f1f1f;
-      --text:#f5f5f5;
-      --accent:#9C222A;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.4);
-    }
+  :root{
+    --bg:#0a0a0a;
+    --card:#121212;
+    --line:#1f1f1f;
+    --text:#f5f5f5;
+    --muted:#cfcfcf;
+    --accent:#9C222A;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --radius:16px;
+  }
 
-    *{box-sizing:border-box}
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
-    }
+  /* TÍTULOS GENERALES */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(156,34,42,0.18);
+  }
 
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+  /* Top bar */
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
 
-    /* ================= TOP BAR ================= */
-    .top{
-      position:sticky;
-      top:0;
-      z-index:50;
-      height:64px;
-      background:rgba(10,10,10,.9);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:center;
-    }
+  .wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 54px 1fr 54px;
+    align-items: center;
+    height: 100%;
+  }
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:0 16px;
-      width:100%;
-      display:grid;
-      grid-template-columns:48px 1fr 48px;
-      align-items:center;
-    }
+  /* BOTÓN MENÚ (☰) */
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,0.28);
+    background: #0f0f0f;
+    color: #ffffff;
+
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+
+    cursor: pointer;
+    opacity: 0.95;
+    transition: 0.2s;
+  }
+
+  .menu-icon:hover {
+    background: #1a1a1a;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Ajuste celular */
+  @media (max-width:640px){
     .menu-icon{
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      border:1.5px solid rgba(255,255,255,.3);
-      background:#0f0f0f;
-      color:#fff;
-      font-size:24px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:.2s;
+      width: 52px;
+      height: 52px;
+      font-size: 30px;
+      line-height: 0;
+      position: relative;
+      top: -1px;
     }
+  }
 
-    .menu-icon:hover{
-      border-color:var(--accent);
-      color:var(--accent);
-    }
+  /* Drawer */
+  .drawer { display:none; }
+  .drawer.open { display:block; }
+  .drawer .sheet {
+    border-top: 1px solid #1c1c1c;
+    background: #0e0e0e;
+  }
+  .drawer a {
+    display: block;
+    padding: 14px 20px;
+    border-bottom: 1px solid #161616;
+    color: #ffffff;
+  }
 
-    .logo{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+  /* Logo centrado */
+  .center-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .center-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  @media (min-width: 768px) {
+    .center-logo img { height: 52px; }
+  }
 
-    .logo img{
-      height:48px;
-      border-radius:12px;
-    }
+  /* Botón volver */
+  .back-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: .2s;
+    padding: 0;
+    line-height: 0.85;
+  }
+  .back-arrow,
+  .back-bracket {
+    display: inline-block;
+    line-height: 0.85;
+    vertical-align: middle;
+  }
+  .back-arrow {
+    position: relative;
+    top: 1px;
+    font-size: 26px;
+  }
+  .back-bracket {
+    position: relative;
+    top: -1px;
+    font-size: 32px;
+    font-weight: 350;
+  }
+  .back-icon:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+  @media (max-width:640px){
+    .back-icon { width:48px; height:48px; }
+  }
 
-    .back{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:26px;
-      opacity:.9;
-      transition:.2s;
-    }
+  /* Page */
+  .page{
+    max-width:1200px;
+    margin:0 auto;
+    padding:18px 16px 32px;
+  }
+  h1{font-size:26px;margin:10px 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
 
-    .back:hover{
-      color:var(--accent);
-    }
+  /* Delivery cards */
+  .delivery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top: 14px;
+  }
 
-    /* ================= DRAWER ================= */
-    .drawer{
-      display:none;
-      background:#0e0e0e;
-      border-bottom:1px solid var(--line);
-    }
+  @media (max-width: 860px){
+    .delivery-grid{ grid-template-columns:1fr; }
+  }
 
-    .drawer.open{display:block}
+  .delivery-card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 18px 16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    transition:.15s ease;
+  }
 
-    .drawer a{
-      display:block;
-      padding:14px 20px;
-      border-bottom:1px solid #161616;
-    }
+  .delivery-card:hover{
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
 
-    /* ================= DELIVERY ================= */
-    main{
-      max-width:900px;
-      margin:0 auto;
-      padding:32px 16px;
-    }
+  .delivery-icon{
+    width:56px;
+    height:56px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: #101010;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 28px;
+    flex:0 0 auto;
+  }
 
-    h1{
-      font-family:'Cinzel',serif;
-      text-align:center;
-      font-size:22px;
-      letter-spacing:2px;
-      margin-bottom:26px;
-    }
+  .delivery-info{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width: 0;
+  }
 
-    .delivery-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
+  .delivery-title{
+    font-weight: 750;
+    font-size: 16px;
+    color:#fff;
+  }
 
-    .delivery-box{
-      height:80px;
-      background:var(--card);
-      border:1.5px solid rgba(255,255,255,.18);
-      border-radius:22px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:var(--shadow);
-      transition:.25s;
-    }
+  .delivery-desc{
+    font-size: 13px;
+    color: var(--muted);
+    margin:0;
+  }
 
-    .delivery-box img{
-      max-height:42px;
-      max-width:60%;
-      object-fit:contain;
-    }
+  .delivery-cta{
+    margin-left:auto;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    opacity: .95;
+  }
 
-    .delivery-box:hover{
-      transform:translateY(-2px);
-      border-color:var(--accent);
-    }
-
-    /* Mobile */
-    @media(max-width:640px){
-      .delivery-grid{
-        grid-template-columns:1fr;
-      }
-
-      .delivery-box{
-        height:100px;
-      }
-
-      .delivery-box img{
-        max-height:44px;
-      }
-    }
-
-    /* ================= FOOTER ================= */
-    footer{
-      border-top:1px solid var(--line);
-      background:#0a0a0a;
-      margin-top:40px;
-    }
-
-    .footer{
-      max-width:1100px;
-      margin:0 auto;
-      padding:24px 20px;
-      display:grid;
-      gap:14px;
-    }
-
-    .foot-row{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .foot-small{
-      color:#9f9f9f;
-      font-size:13px;
-    }
+  /* FOOTER IGUAL AL DE INDEX */
+  footer{
+    border-top:1px solid #1b1b1b;
+    background:#0a0a0a;
+    margin-top: 26px;
+  }
+  .footer{
+    max-width:1100px;
+    margin:0 auto;
+    padding:24px 20px;
+    display:grid;
+    gap:14px;
+  }
+  .foot-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .foot-small{ color:#9f9f9f; font-size:13px; }
+  .ig{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:14px;
+    border:1px solid #232323;
+    background:#121212;
+  }
+  .addr{ color:#d9d9d9; }
+  .map{ color:#9f9f9f; text-decoration:underline; }
+  .nikkei{ font-family:'Cinzel',serif; font-weight:700; letter-spacing:.5px; }
   </style>
 </head>
 
 <body>
 
-  <!-- TOP BAR -->
+  <!-- Top bar -->
   <div class="top">
     <div class="wrap">
-      <button id="menuBtn" class="menu-icon">☰</button>
 
-      <div class="logo">
-        <img src="logo-nikkei.png" alt="NIKKEI 419">
+      <!-- Botón menú -->
+      <button id="menu-btn" class="menu-icon" aria-label="Abrir menú">☰</button>
+
+      <!-- Logo centrado -->
+      <div class="center-logo">
+        <img src="logo-nikkei.png" alt="NIKKEI 419" />
       </div>
 
-      <a href="index.html" class="back" aria-label="Volver">→]</a>
+      <!-- Volver -->
+      <a href="index.html" class="back-icon" aria-label="Volver">
+        <span class="back-arrow">→</span><span class="back-bracket">]</span>
+      </a>
+
     </div>
   </div>
 
-  <!-- DRAWER -->
-  <div id="drawer" class="drawer">
-    <a href="index.html">Inicio</a>
-    <a href="comida.html">Comida</a>
-    <a href="bebestibles.html">Bebestibles</a>
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="sheet">
+      <a href="index.html" onclick="toggleDrawer(false)">Inicio</a>
+      <a href="comida.html" onclick="toggleDrawer(false)">Comida</a>
+      <a href="bebestibles.html" onclick="toggleDrawer(false)">Bebestibles</a>
+      <a href="delivery.html" onclick="toggleDrawer(false)"><strong>Delivery</strong></a>
+    </div>
   </div>
 
-  <!-- DELIVERY -->
-  <main>
-    <h1>Pide por delivery</h1>
+  <main class="page">
+    <h1>Delivery</h1>
+    <p class="sub">Elige tu plataforma y pide directo.</p>
 
     <div class="delivery-grid">
 
-      <a href="PON_AQUI_TU_LINK_UBER"
-         target="_blank"
-         class="delivery-box">
-        <img src="icons/uber-eats.png" alt="Uber Eats">
+      <!-- UBER EATS -->
+      <a class="delivery-card" href="PON_AQUI_TU_LINK_UBER_EATS" target="_blank" rel="noopener">
+        <div class="delivery-icon">🍣</div>
+        <div class="delivery-info">
+          <div class="delivery-title">Uber Eats</div>
+          <p class="delivery-desc">Pide desde la app y recibe en minutos.</p>
+        </div>
+        <div class="delivery-cta">Abrir</div>
       </a>
 
-      <a href="PON_AQUI_TU_LINK_RAPPI"
-         target="_blank"
-         class="delivery-box">
-        <img src="icons/rappi.png" alt="Rappi">
+      <!-- RAPPI -->
+      <a class="delivery-card" href="PON_AQUI_TU_LINK_RAPPI" target="_blank" rel="noopener">
+        <div class="delivery-icon">🛵</div>
+        <div class="delivery-info">
+          <div class="delivery-title">Rappi</div>
+          <p class="delivery-desc">Delivery rápido con seguimiento en vivo.</p>
+        </div>
+        <div class="delivery-cta">Abrir</div>
       </a>
 
-      <a href="https://wa.me/569XXXXXXXX"
-         target="_blank"
-         class="delivery-box">
-        <img src="icons/whatsapp.png" alt="WhatsApp">
+      <!-- WHATSAPP -->
+      <a class="delivery-card" href="https://wa.me/569XXXXXXXX" target="_blank" rel="noopener">
+        <div class="delivery-icon">💬</div>
+        <div class="delivery-info">
+          <div class="delivery-title">WhatsApp</div>
+          <p class="delivery-desc">Pedido directo con atención personalizada.</p>
+        </div>
+        <div class="delivery-cta">Escribir</div>
       </a>
 
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- Footer -->
+  <footer role="contentinfo">
     <div class="footer">
       <div class="foot-row">
-        <span class="foot-small">© <span id="year"></span> NIKKEI 419</span>
-        <span class="foot-small">Viña del Mar, Chile</span>
+        <a class="ig" href="https://instagram.com/nikkei419" target="_blank" rel="noopener">
+          <span>📸 Instagram</span>
+          <strong>@nikkei419</strong>
+        </a>
+        <div class="addr">
+          <strong>Dirección:</strong>
+          <a class="map"
+             href="https://maps.google.com/?q=San+Martin+421,+Viña+del+Mar,+Chile"
+             target="_blank" rel="noopener">
+            San Martín 421, Viña del Mar, Chile
+          </a>
+        </div>
+      </div>
+      <div class="foot-row">
+        <span class="foot-small">© <span id="year"></span> <span class="nikkei">NIKKEI 419</span>. Todos los derechos reservados.</span>
+        <span class="foot-small">Restaurante Nikkei en Viña del Mar, Chile.</span>
       </div>
     </div>
   </footer>
 
-  <!-- JS -->
   <script>
+    // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const menuBtn = document.getElementById('menuBtn');
+    // Drawer
+    const burger = document.getElementById('menu-btn');
     const drawer = document.getElementById('drawer');
 
-    menuBtn.addEventListener('click', () => {
-      drawer.classList.toggle('open');
-    });
+    function toggleDrawer(force) {
+      const open = typeof force === 'boolean'
+        ? force
+        : !drawer.classList.contains('open');
+
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', String(!open));
+    }
+
+    burger.addEventListener('click', () => toggleDrawer());
+    window.addEventListener('hashchange', () => toggleDrawer(false));
   </script>
 
 </body>
