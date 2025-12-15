@@ -10,12 +10,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/logo1.png" />
   <meta name="theme-color" content="#000000" />
+
   <!-- Fuente para el branding -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root { --nikkei-font: 'Cinzel', serif; }
-  .nikkei { font-family: var(--nikkei-font); font-weight: 700; letter-spacing: .5px; }
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --nikkei-font: 'Cinzel', serif; }
+    .nikkei { font-family: var(--nikkei-font); font-weight: 700; letter-spacing: .5px; }
+  </style>
 
   <style>
     :root{
@@ -23,13 +24,27 @@
       --radius:18px; --shadow:0 8px 30px rgba(0,0,0,.4);
     }
     html{scroll-behavior:smooth}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text);}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+    }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
-    
+
     /* Header */
-    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(10,10,10,.6); border-bottom:1px solid #1c1c1c}
-    .nav-wrap{max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(10,10,10,.6);
+      border-bottom:1px solid #1c1c1c
+    }
+    .nav-wrap{
+      max-width:1100px; margin:0 auto;
+      padding:14px 20px;
+      display:flex; align-items:center; gap:16px
+    }
     .brand{display:flex; align-items:center; gap:10px}
     .brand img{width:40px; height:40px; border-radius:12px}
     .brand h1{font-size:18px; margin:0; letter-spacing:.5px; font-weight:700}
@@ -38,21 +53,22 @@
     .menu a{padding:8px 12px; border-radius:12px; transition:background .2s ease}
     .menu a:hover{background:#1a1a1a}
     .cta{background:var(--accent); color:#0a0a0a; padding:8px 12px; border-radius:12px; font-weight:700}
-.burger {
-  display: none;
-  border: 1px solid #ffffff;    /* borde blanco */
-  border-radius: 10px;
-  padding: 6px 9px;             /* tamaño medio del área */
-  background: #0f0f0f;          /* fondo oscuro */
-  color: #ffffff;               /* icono blanco */
-  font-size: 18px;              /* tamaño intermedio del símbolo ☰ */
-  cursor: pointer;
-}
-    .burger:hover {
-  background: #1a1a1a;
-  border-color: #f0b90b; /* tono dorado sutil */
-  color: #f0b90b;
-}
+
+    .burger{
+      display:none;
+      border:1px solid #ffffff;
+      border-radius:10px;
+      padding:6px 9px;
+      background:#0f0f0f;
+      color:#ffffff;
+      font-size:18px;
+      cursor:pointer;
+    }
+    .burger:hover{
+      background:#1a1a1a;
+      border-color:#f0b90b;
+      color:#f0b90b;
+    }
 
     /* Mobile nav */
     @media (max-width: 780px){
@@ -66,15 +82,37 @@
 
     /* Hero */
     .hero{max-width:1100px; margin:0 auto; padding:56px 20px 22px}
-    .hero-card{background:radial-gradient(1200px 500px at 80% -10%, rgba(240,185,11,.08), transparent),
-               linear-gradient(180deg, #0c0c0c 0%, #0a0a0a 100%); border:1px solid #1a1a1a; border-radius:28px; box-shadow:var(--shadow);
-               padding:36px}
+    .hero-card{
+      background:
+        radial-gradient(1200px 500px at 80% -10%, rgba(240,185,11,.08), transparent),
+        linear-gradient(180deg, #0c0c0c 0%, #0a0a0a 100%);
+      border:1px solid #1a1a1a;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:36px
+    }
     .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:26px}
     .hero h2{font-size:40px; margin:0 0 8px}
     .hero p{margin:0 0 18px; color:var(--soft)}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:#121212; border:1px solid #1e1e1e; border-radius:999px; font-size:13px; color:#d9d9d9}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      background:#121212;
+      border:1px solid #1e1e1e;
+      border-radius:999px;
+      font-size:13px;
+      color:#d9d9d9
+    }
     .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid #232323; background:#121212; color:#fff; font-weight:600}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid #232323;
+      background:#121212;
+      color:#fff;
+      font-weight:600
+    }
     .btn:hover{background:#181818}
     .btn.primary{background:var(--accent); color:#111; border-color:#d1a308}
 
@@ -95,16 +133,14 @@
     .desc{color:#bdbdbd; font-size:14px}
 
     /* About */
-    .about{background:linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%); border-top:1px solid #151515; border-bottom:1px solid #151515}
+    .about{
+      background:linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+      border-top:1px solid #151515;
+      border-bottom:1px solid #151515
+    }
     .about-wrap{max-width:900px; margin:0 auto; padding:40px 20px; text-align:center}
     .about h3{font-size:26px; margin:4px 0 8px}
     .about p{color:#d4d4d4; line-height:1.7}
-
-    /* Delivery */
-    .delivery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    @media (max-width:880px){.delivery-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.delivery-grid{grid-template-columns:1fr}}
-    .chip{display:inline-flex; gap:8px; align-items:center; padding:10px 12px; border:1px solid #262626; border-radius:999px; background:#111}
 
     /* Footer */
     footer{border-top:1px solid #1b1b1b; background:#0a0a0a}
@@ -116,54 +152,56 @@
     .map{color:#9f9f9f; text-decoration:underline}
   </style>
 </head>
+
 <body>
   <!-- Header / Navigation -->
- <!-- Header / Navigation -->
-<header class="nav" role="banner">
-  <div class="nav-wrap">
-  <a class="brand" href="#inicio" aria-label="Inicio">
-  <img src="logo1.png" alt="Logo NIKKEI 419" style="width:60px;height:60px;border-radius:50%;object-fit:cover;">
-  <span class="brand-name nikkei">NIKKEI 419</span>
-</a>
+  <header class="nav" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <img src="logo1.png" alt="Logo NIKKEI 419" style="width:60px;height:60px;border-radius:50%;object-fit:cover;">
+        <span class="brand-name nikkei">NIKKEI 419</span>
+      </a>
 
-    <div class="spacer"></div>
-    <nav class="menu" aria-label="Principal">
-      <a href="comida.html">Comida</a>
-      <a href="bebestibles.html">Bebestibles</a>
-      <a href="delivery.html" class="cta">Delivery</a>
-    </nav>
-    <button class="burger" aria-label="Abrir menú" id="burger">☰</button>
-  </div>
+      <div class="spacer"></div>
 
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="sheet">
-      <a href="comida.html" onclick="toggleDrawer(false)">Comida</a>
-      <a href="bebestibles.html" onclick="toggleDrawer(false)">Bebestibles</a>
-      <a href="delivery.html" onclick="toggleDrawer(false)"><strong>Delivery</strong></a>
+      <nav class="menu" aria-label="Principal">
+        <a href="comida.html">Comida</a>
+        <a href="bebestibles.html">Bebestibles</a>
+        <a href="delivery.html" class="cta">Delivery</a>
+      </nav>
+
+      <button class="burger" aria-label="Abrir menú" id="burger">☰</button>
     </div>
-  </div>
-</header>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="sheet">
+        <a href="comida.html" onclick="toggleDrawer(false)">Comida</a>
+        <a href="bebestibles.html" onclick="toggleDrawer(false)">Bebestibles</a>
+        <a href="delivery.html" onclick="toggleDrawer(false)"><strong>Delivery</strong></a>
+      </div>
+    </div>
+  </header>
 
   <!-- Hero -->
-  <section class="hero" aria-labelledby="tit">
+  <section class="hero" aria-labelledby="tit" id="inicio">
     <div class="hero-card">
       <div class="hero-grid">
         <div>
           <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
           <h2 id="tit"><span class="nikkei">NIKKEI 419</span></h2>
           <p>Experimenta una fusion de sabores.</p>
-         <div class="actions">
-  <a class="btn primary" href="comida.html">Ver comida</a>
-  <a class="btn" href="bebestibles.html">Bebestibles</a>
-  <a class="btn" href="delivery.html">Delivery</a>
-</div>
+          <div class="actions">
+            <a class="btn primary" href="comida.html">Ver comida</a>
+            <a class="btn" href="bebestibles.html">Bebestibles</a>
+            <a class="btn" href="delivery.html">Delivery</a>
+          </div>
         </div>
+
         <div>
           <div class="card" aria-hidden="true">
-          <div class="cover">
-  <img src="destacada.png" alt="Plato destacado Nikkei 419" style="width:100%;height:100%;object-fit:cover;">
-</div>
-
+            <div class="cover">
+              <img src="destacada.png" alt="Plato destacado Nikkei 419" style="width:100%;height:100%;object-fit:cover;">
+            </div>
             <div class="body">
               <h4>Makimono Bataa</h4>
               <p class="desc">Roll relleno de tartar de atún y camarón tempurizado, envuelto en salmón grillado y terminado con mantequilla batayaki, kimchi y cilantro<em></em>.</p>
@@ -171,6 +209,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -181,13 +220,12 @@
       <span class="pill">Nuestra historia</span>
       <h3 id="title-historia">NIKKEI 419</h3>
       <p>
-        Somos un restaurant de sushi ubicado en el corazón de Viña del mar con mas de 20 años de trayectoria nos destacamos por nuestra dedicacion, profesionalismo y siempre tener productos de primera calidad. 
+        Somos un restaurant de sushi ubicado en el corazón de Viña del mar con mas de 20 años de trayectoria nos destacamos por nuestra dedicacion, profesionalismo y siempre tener productos de primera calidad.
       </p>
     </div>
   </section>
 
-  <!-- Footer: Instagram + Dirección -->
-    <!-- Footer: Instagram + Dirección -->
+  <!-- Footer -->
   <footer role="contentinfo">
     <div class="footer">
       <div class="foot-row">
@@ -203,12 +241,13 @@
         </div>
       </div>
       <div class="foot-row">
-       <span class="foot-small">© <span id="year"></span> <span class="nikkei">NIKKEI 419</span>. Todos los derechos reservados.</span>
+        <span class="foot-small">© <span id="year"></span> <span class="nikkei">NIKKEI 419</span>. Todos los derechos reservados.</span>
         <span class="foot-small">Restaurante Nikkei en Viña del Mar, Chile.</span>
       </div>
     </div>
   </footer>
 
+  <!-- JS (único, sin duplicados) -->
   <script>
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -216,35 +255,18 @@
     // Mobile drawer
     const burger = document.getElementById('burger');
     const drawer = document.getElementById('drawer');
+
     function toggleDrawer(force){
       const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
       drawer.classList.toggle('open', open);
       drawer.setAttribute('aria-hidden', String(!open));
     }
+
     burger.addEventListener('click', () => toggleDrawer());
-    window.addEventListener('hashchange', ()=> toggleDrawer(false));
+    window.addEventListener('hashchange', () => toggleDrawer(false));
   </script>
 
-
-  <script>
-    // Año dinámico
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile drawer
-    const burger = document.getElementById('burger');
-    const drawer = document.getElementById('drawer');
-    function toggleDrawer(force){
-      const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
-      drawer.classList.toggle('open', open);
-      drawer.setAttribute('aria-hidden', String(!open));
-    }
-    burger.addEventListener('click', () => toggleDrawer());
-
-    // Cierra el drawer al navegar por anclas (por si quedan abiertas)
-    window.addEventListener('hashchange', ()=> toggleDrawer(false));
-  </script>
-
-  <!-- SEO / Datos estructurados (opcional, rellena con tus datos) -->
+  <!-- SEO / Datos estructurados (opcional) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -267,21 +289,9 @@
     ]
   }
   </script>
-
-  <!--
-  ▸ Cómo usar con código QR
-    1) Sube este archivo como https://tudominio.com/index.html (o usa GitHub Pages / Netlify / Vercel).
-    2) Genera un QR con esa URL (sitios como qrcode-monkey.com o tu impresora QR).
-    3) Imprímelo y pégalo en mesas / cartas físicas.
-
-  ▸ Personaliza rápido
-    - Reemplaza /logo.png por tu archivo real.
-    - Cambia textos, precios e imágenes dentro de cada .card.
-    - Ajusta enlaces de WhatsApp, teléfono y apps de delivery.
-    - En el footer, pon tu @ de Instagram y la dirección real.
-  -->
 </body>
 </html>
+
 
 
 
