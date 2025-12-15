@@ -163,7 +163,7 @@
       text-transform:uppercase;
     }
 
-/* ===== Slider Banner (4 imágenes, sin recorte) ===== */
+/* ===== Slider Banner (4 imágenes, sin recorte y transición suave) ===== */
 .slider{
   position:relative;
   overflow:hidden;
@@ -190,8 +190,27 @@
   background:#0a0a0a;      /* ✅ correcto */
 }
 
-/* Animación para 4 imágenes */
-@keyframes slide4{
+/* Duplicamos las primeras imágenes al final para un ciclo suave */
+.slides {
+  animation: slide4 20s infinite;
+  animation-timing-function: ease-in-out; /* Cambio para suavizar la transición */
+}
+
+.slides img:nth-child(1),
+.slides img:nth-child(2),
+.slides img:nth-child(3),
+.slides img:nth-child(4) {
+  opacity: 1; /* Añadimos opacidad al principio */
+}
+
+.slides img:nth-child(5),
+.slides img:nth-child(6),
+.slides img:nth-child(7),
+.slides img:nth-child(8) {
+  opacity: 0; /* Añadimos opacidad al ciclo para no ver duplicados */
+}
+
+@keyframes slide4 {
   0%, 20%   { transform: translateX(0%); }
   25%, 45%  { transform: translateX(-25%); }
   50%, 70%  { transform: translateX(-50%); }
@@ -342,6 +361,7 @@
   </script>
 </body>
 </html>
+
 
 
 
