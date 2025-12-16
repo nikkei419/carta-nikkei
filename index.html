@@ -13,49 +13,63 @@
 
   <!-- Fuente para el branding -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root { --nikkei-font: 'Cinzel', serif; }
-    .nikkei { font-family: var(--nikkei-font); font-weight: 700; letter-spacing: .5px; }
-  </style>
 
   <style>
     :root{
-      --bg:#0a0a0a; --muted:#161616; --text:#f5f5f5; --soft:#cfcfcf; --accent:#9C222A; --card:#111111;
-      --radius:18px; --shadow:0 8px 30px rgba(0,0,0,.4);
+      --nikkei-font:'Cinzel', serif;
+
+      --bg:#0a0a0a;
+      --text:#f5f5f5;
+      --soft:#cfcfcf;
+      --accent:#9C222A;
+      --card:#111111;
+      --shadow:0 8px 30px rgba(0,0,0,.4);
     }
-    html{scroll-behavior:smooth}
+
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
       background:var(--bg);
       color:var(--text);
     }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; height:auto; display:block}
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; height:auto; display:block; }
+
+    .nikkei{ font-family:var(--nikkei-font); font-weight:700; letter-spacing:.5px; }
 
     /* Header */
     .nav{
-      position:sticky; top:0; z-index:100;
+      position:sticky;
+      top:0;
+      z-index:100;
       backdrop-filter:saturate(140%) blur(8px);
       background:rgba(10,10,10,.6);
-      border-bottom:1px solid #1c1c1c
-      min-height:56px; /* controla la altura real */
-}
+      border-bottom:1px solid #1c1c1c;
+      min-height:56px;
+    }
 
-    }
     .nav-wrap{
-      max-width:1100px; margin:0 auto;
-      padding:0px 20px;
-      display:flex; align-items:center; gap:16px
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      min-height:56px;
     }
-    .brand{display:flex; align-items:center; gap:10px}
-    .brand img{width:40px; height:40px; border-radius:12px}
-    .brand h1{font-size:18px; margin:0; letter-spacing:.5px; font-weight:700}
-    .spacer{flex:1}
-    .menu{display:flex; gap:14px}
-    .menu a{padding:8px 12px; border-radius:12px; transition:background .2s ease}
-    .menu a:hover{background:#1a1a1a}
-    .cta{background:var(--accent); color:#ffffff; padding:8px 12px; border-radius:12px; font-weight:700}
+
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand img{ width:60px; height:60px; border-radius:50%; object-fit:cover; }
+    .brand-name{ font-family:var(--nikkei-font); font-weight:700; letter-spacing:.5px; }
+
+    .spacer{ flex:1; }
+
+    .menu{ display:flex; gap:14px; }
+    .menu a{ padding:8px 12px; border-radius:12px; transition:background .2s ease; }
+    .menu a:hover{ background:#1a1a1a; }
+    .cta{ background:var(--accent); color:#fff; padding:8px 12px; border-radius:12px; font-weight:700; }
 
     .burger{
       display:none;
@@ -73,33 +87,54 @@
       color:#9C222A;
     }
 
-    /* Mobile nav */
-    @media (max-width: 780px){
-      .menu{display:none}
-      .burger{display:block}
+    @media (max-width:780px){
+      .menu{ display:none; }
+      .burger{ display:block; }
     }
 
-    .drawer{display:none}
-    .drawer.open{display:block}
-    .drawer .sheet{border-top:1px solid #1c1c1c; background:#0e0e0e}
-    .drawer a{display:block; padding:14px 20px; border-bottom:1px solid #161616}
+    .drawer{ display:none; }
+    .drawer.open{ display:block; }
+    .drawer .sheet{ border-top:1px solid #1c1c1c; background:#0e0e0e; }
+    .drawer a{ display:block; padding:14px 20px; border-bottom:1px solid #161616; }
 
     /* Hero */
-    .hero{max-width:1100px; margin:0 auto; padding:20px 20px 18px}
+    .hero{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px 20px 18px;
+    }
+    @media (max-width:640px){
+      .hero{ padding-top:14px; }
+    }
+
     .hero-card{
+      margin-top:-6px;
       background:
         radial-gradient(1200px 500px at 80% -10%, rgba(150,34,42,.18), transparent),
         linear-gradient(180deg, #0c0c0c 0%, #0a0a0a 100%);
       border:1px solid #1a1a1a;
       border-radius:28px;
       box-shadow:var(--shadow);
-      padding:28px
+      padding:28px;
     }
-    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:26px}
-    .hero h2{font-size:40px; margin:0 0 8px}
-    .hero p{margin:0 0 18px; color:var(--soft)}
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:start;
+    }
+    @media (max-width:980px){
+      .hero-grid{ grid-template-columns:1fr; }
+    }
+
+    .hero h2{ font-size:40px; margin:0 0 8px; }
+    .hero p{ margin:0 0 18px; color:var(--soft); }
+
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:8px 12px;
       background:#121212;
       border:1px solid #1e1e1e;
@@ -108,148 +143,114 @@
       color:#d9d9d9;
       margin-top:-6px;
     }
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
     .btn{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:12px 16px;
       border-radius:14px;
       border:1px solid #232323;
       background:#121212;
       color:#fff;
-      font-weight:600
+      font-weight:600;
     }
-    .btn:hover{background:#181818}
-    .btn.primary{background:#9C222A; color:#ffffff; border-color:#9C222A}
+    .btn:hover{ background:#181818; }
+    .btn.primary{ background:#9C222A; border-color:#9C222A; }
 
-    /* Sections */
-    section{max-width:1100px; margin:0 auto; padding:28px 20px}
-    .section-title{display:flex; align-items:flex-end; justify-content:space-between; margin:18px 0 10px}
-    .section-title h3{font-size:28px; margin:0}
-    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    @media (max-width: 980px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width: 620px){.cards{grid-template-columns:1fr}}
-    .card{background:var(--card); border:1px solid #1b1b1b; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-top:-12px;}
-    .card .cover{height:130px; background:#151515; display:flex; align-items:center; justify-content:center}
-    .card .cover span{opacity:.6}
-    .card .body{padding:14px}
-    .card h4{margin:0 0 6px; font-size:18px}
-    .meta{display:flex; align-items:center; justify-content:space-between; color:#cfcfcf}
-    .price{font-weight:700; color:#fff}
-    .desc{color:#bdbdbd; font-size:14px}
-    @media (max-width: 640px){
-  .hero{
-    padding-top:14px;
-  }
-}
-    .hero-card{
-  margin-top:-6px;
-}
-
-
-
-    /* About */
-    .about{
-      background:linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
-      border-top:1px solid #151515;
-      border-bottom:1px solid #151515
+    /* Card promo */
+    .card{
+      background:var(--card);
+      border:1px solid #1b1b1b;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-top:-12px;
     }
-    .about-wrap{max-width:900px; margin:0 auto; padding:40px 20px; text-align:center}
-    .about h3{font-size:26px; margin:4px 0 8px}
-    .about p{color:#d4d4d4; line-height:1.7}
 
-    /* Footer */
-    footer{border-top:1px solid #1b1b1b; background:#0a0a0a}
-    .footer{max-width:1100px; margin:0 auto; padding:24px 20px; display:grid; gap:14px}
-    .foot-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px}
-    .foot-small{color:#9f9f9f; font-size:13px}
-    .ig{display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:14px; border:1px solid #232323; background:#121212}
-    .addr{color:#d9d9d9}
-    .map{color:#9f9f9f; text-decoration:underline}
-
-    /* ===== Banner Title ===== */
     .banner-title{
       text-align:center;
       font-family:var(--nikkei-font);
       font-size:12px;
       letter-spacing:4px;
-      margin:0 0 8px;
+      margin:14px 0 10px;
       color:rgba(156,34,42,.85);
       text-transform:uppercase;
     }
 
-/* ===== Slider Banner (4 imágenes, sin recorte y transición suave) ===== */
-.slider{
-  position:relative;
-  overflow:hidden;
-  height:260px;           /* móvil */
-  border-radius:18px;
-}
-@media (min-width: 640px){
-  .slider{ height:320px; } /* desktop/tablet */
-}
+    /* Slider (loop suave con JS) */
+    .slider{
+      position:relative;
+      overflow:hidden;
+      height:260px;            /* móvil */
+      border-radius:18px;
+      background:#0a0a0a;
+    }
+    @media (min-width:640px){
+      .slider{ height:320px; } /* tablet/desktop */
+    }
 
-.slides{
-  display:flex;
-  width:400%;              /* ✅ 4 imágenes */
-  height:100%;
-  animation: slide4 20s infinite;
-}
+    .slides{
+      display:flex;
+      height:100%;
+      will-change:transform;
+      transform:translateX(0%);
+    }
 
-.slides img{
-  width:25%;               /* ✅ 100/4 */
-  height:100%;             /* ✅ clave */
-  flex-shrink:0;
-  object-fit:contain;      /* ✅ NO recorta */
-  object-position:center;
-  background:#0a0a0a;      /* ✅ correcto */
-}
+    .slides img{
+      flex:0 0 100%;
+      width:100%;
+      height:100%;
+      object-fit:contain;      /* NO recorta */
+      object-position:center;
+      background:#0a0a0a;
+    }
 
-/* Duplicamos las primeras imágenes al final para un ciclo suave */
-.slides {
-  animation: slide4 20s infinite;
-  animation-timing-function: ease-in-out; /* Cambio para suavizar la transición */
-}
+    /* About */
+    .about{
+      background:linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+      border-top:1px solid #151515;
+      border-bottom:1px solid #151515;
+    }
+    .about-wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .about h3{ font-size:26px; margin:4px 0 8px; }
+    .about p{ color:#d4d4d4; line-height:1.7; }
 
-.slides img:nth-child(1),
-.slides img:nth-child(2),
-.slides img:nth-child(3),
-.slides img:nth-child(4) {
-  opacity: 1; /* Añadimos opacidad al principio */
-}
-
-.slides img:nth-child(5),
-.slides img:nth-child(6),
-.slides img:nth-child(7),
-.slides img:nth-child(8) {
-  opacity: 0; /* Añadimos opacidad al ciclo para no ver duplicados */
-}
-
-/* ===== Slider Premium (loop suave) ===== */
-.slider{
-  position:relative;
-  overflow:hidden;
-  height:260px;
-  border-radius:18px;
-}
-@media (min-width: 640px){
-  .slider{ height:320px; }
-}
-
-.slides{
-  display:flex;
-  height:100%;
-  will-change: transform;
-}
-
-.slides img{
-  width:100%;
-  height:100%;
-  flex:0 0 100%;
-  object-fit:contain;     /* no recorta */
-  object-position:center;
-  background:#0a0a0a;
-}
-
+    /* Footer */
+    footer{ border-top:1px solid #1b1b1b; background:#0a0a0a; }
+    .footer{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 20px;
+      display:grid;
+      gap:14px;
+    }
+    .foot-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .foot-small{ color:#9f9f9f; font-size:13px; }
+    .ig{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid #232323;
+      background:#121212;
+    }
+    .addr{ color:#d9d9d9; }
+    .map{ color:#9f9f9f; text-decoration:underline; }
   </style>
 </head>
 
@@ -258,7 +259,7 @@
   <header class="nav" role="banner">
     <div class="nav-wrap">
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <img src="logo1.png" alt="Logo NIKKEI 419" style="width:60px;height:60px;border-radius:50%;object-fit:cover;">
+        <img src="logo1.png" alt="Logo NIKKEI 419">
         <span class="brand-name nikkei">NIKKEI 419</span>
       </a>
 
@@ -275,9 +276,9 @@
 
     <div class="drawer" id="drawer" aria-hidden="true">
       <div class="sheet">
-        <a href="comida.html" onclick="toggleDrawer(false)">Comida</a>
-        <a href="bebestibles.html" onclick="toggleDrawer(false)">Bebestibles</a>
-        <a href="delivery.html" onclick="toggleDrawer(false)">Delivery</a>
+        <a href="comida.html" class="drawer-link">Comida</a>
+        <a href="bebestibles.html" class="drawer-link">Bebestibles</a>
+        <a href="delivery.html" class="drawer-link">Delivery</a>
       </div>
     </div>
   </header>
@@ -286,10 +287,12 @@
   <section class="hero" aria-labelledby="tit" id="inicio">
     <div class="hero-card">
       <div class="hero-grid">
+
         <div>
           <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
           <h2 id="tit"><span class="nikkei">NIKKEI 419</span></h2>
           <p>Experimenta una fusión de sabores.</p>
+
           <div class="actions">
             <a class="btn primary" href="comida.html">Ver comida</a>
             <a class="btn" href="bebestibles.html">Bebestibles</a>
@@ -301,19 +304,23 @@
           <div class="card" aria-hidden="true">
             <p class="banner-title">Solo por diciembre</p>
 
-            <!-- Slider (sin .cover) -->
-           <div class="slider" id="promoSlider">
-  <div class="slides" id="promoSlides">
-    <img src="promo/chile.jpg" alt="40 chile">
-    <img src="promo/cenco.jpg" alt="40 cenco">
-    <img src="promo/3x2.jpg" alt="Sushi 3x2">
-    <img src="promo/happy.jpg" alt="Happy hour">
-    <img src="promo/chile.jpg" alt="" aria-hidden="true"> <!-- duplicada para loop suave -->
-  </div>
-</div>
+            <div class="slider" id="promoSlider">
+              <div class="slides" id="promoSlides">
+                <img src="promo/chile.png" alt="40 chile">
+                <img src="promo/cenco.png" alt="40 cenco">
+                <img src="promo/3x2.png" alt="Sushi 3x2">
+                <img src="promo/happy.png" alt="Happy hour">
+                <!-- duplicada para loop suave -->
+                <img src="promo/chile.png" alt="" aria-hidden="true">
+              </div>
+            </div>
+
           </div>
-   </div>
-      </section>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- About / Historia -->
   <section class="about" aria-labelledby="title-historia">
@@ -334,6 +341,7 @@
           <span>📸 Instagram</span>
           <strong>@nikkei419</strong>
         </a>
+
         <div class="addr">
           <strong>Dirección:</strong>
           <a class="map" href="https://maps.google.com/?q=San+Martin+421,+Viña+del+Mar,+Chile" target="_blank" rel="noopener">
@@ -341,6 +349,7 @@
           </a>
         </div>
       </div>
+
       <div class="foot-row">
         <span class="foot-small">© <span id="year"></span> <span class="nikkei">NIKKEI 419</span>. Todos los derechos reservados.</span>
         <span class="foot-small">Restaurante Nikkei en Viña del Mar, Chile.</span>
@@ -348,7 +357,25 @@
     </div>
   </footer>
 
-  <!-- JS (único, sin duplicados) -->
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "NIKKEI 419",
+    "url": "https://tudominio.com",
+    "image": "https://tudominio.com/logo.png",
+    "servesCuisine": ["Sushi", "Nikkei"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "San Martin 421, Viña del Mar",
+      "addressCountry": "CL"
+    },
+    "sameAs": ["https://www.instagram.com/nikkei419"]
+  }
+  </script>
+
+  <!-- JS único -->
   <script>
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -364,131 +391,35 @@
     }
 
     burger.addEventListener('click', () => toggleDrawer());
-    window.addEventListener('hashchange', () => toggleDrawer(false));
-  </script>
+    document.querySelectorAll('.drawer-link').forEach(a => {
+      a.addEventListener('click', () => toggleDrawer(false));
+    });
 
-  <!-- SEO / Datos estructurados (opcional) -->
+    // Slider loop suave
+    const track = document.getElementById("promoSlides");
+    const imgs  = track.querySelectorAll("img");
+    const total = imgs.length; // incluye la duplicada
+    let index = 0;
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "NIKKEI 419",
-  "url": "https://tudominio.com",
-  "image": "https://tudominio.com/logo.png",
-  "servesCuisine": ["Casera", "De temporada"],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "San Martin 421, Viña del mar",
-    "addressLocality": "Ciudad",
-    "addressRegion": "Región",
-    "postalCode": "000000",
-    "addressCountry": "CL"
-  },
-  "telephone": "+56 9 1234 5678",
-  "sameAs": [
-    "https://www.instagram.com/NIKKEI419"
-  ]
-}
-</script>
-
-<script>
-  // Año dinámico
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Mobile drawer
-  const burger = document.getElementById('burger');
-  const drawer = document.getElementById('drawer');
-
-  function toggleDrawer(force){
-    const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
-    drawer.classList.toggle('open', open);
-    drawer.setAttribute('aria-hidden', String(!open));
-  }
-
-  burger.addEventListener('click', () => toggleDrawer());
-  window.addEventListener('hashchange', () => toggleDrawer(false));
-</script>
-
-<script>
-  const track  = document.getElementById("promoSlides");
-  const slides = track.querySelectorAll("img");
-  const total  = slides.length; // incluye la duplicada
-  let index = 0;
-
-  function go(i, animate=true){
-    track.style.transition = animate ? "transform 650ms ease-in-out" : "none";
-    track.style.transform = `translateX(-${i * 100}%)`;
-  }
-
-  go(0, false);
-
-  setInterval(() => {
-    index++;
-    go(index, true);
-
-    if(index === total - 1){
-      setTimeout(() => {
-        index = 0;
-        go(index, false);
-      }, 700);
+    function go(i, animate = true){
+      track.style.transition = animate ? "transform 650ms ease-in-out" : "none";
+      track.style.transform = `translateX(-${i * 100}%)`;
     }
-  }, 4500);
-</script>
 
+    go(0, false);
+
+    setInterval(() => {
+      index++;
+      go(index, true);
+
+      // cuando llega a la duplicada, vuelve a 0 sin animación
+      if(index === total - 1){
+        setTimeout(() => {
+          index = 0;
+          go(index, false);
+        }, 700);
+      }
+    }, 4500);
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
