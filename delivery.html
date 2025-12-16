@@ -123,12 +123,12 @@
     justify-content: center;
     align-items: center;
   }
-  .center-logo img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 12px;
-  }
+ .center-logo img {
+  height: 48px;      /* alto del logo */
+  width: auto;       /* mantiene proporción */
+  transform-origin: center;
+  transform: scale(3.4);
+}
   @media (min-width: 768px) {
     .center-logo img { height: 52px; }
   }
@@ -305,7 +305,7 @@
 
       <!-- Logo centrado -->
       <div class="center-logo">
-        <img src="logo-nikkei.png" alt="NIKKEI 419" />
+        <img src="logotipo4.png" alt="NIKKEI 419" />
       </div>
 
       <!-- Volver -->
