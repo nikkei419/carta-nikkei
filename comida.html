@@ -2952,22 +2952,7 @@ footer{
       </div>
     </div>
   </footer>
-  <script>
-  const burger = document.getElementById('menu-btn');
-  const drawer = document.getElementById('drawer');
 
-  function toggleDrawer(force) {
-    const open = typeof force === 'boolean'
-      ? force
-      : !drawer.classList.contains('open');
-
-    drawer.classList.toggle('open', open);
-    drawer.setAttribute('aria-hidden', String(!open));
-  }
-
-  burger.addEventListener('click', () => toggleDrawer());
-  window.addEventListener('hashchange', () => toggleDrawer(false));
-</script>
 <script>
   const burger = document.getElementById('burger');
   const drawer = document.getElementById('drawer');
