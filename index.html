@@ -204,14 +204,20 @@
     }
 
     .banner-title{
-      text-align:center;
-      font-family:var(--nikkei-font);
-      font-size:12px;
-      letter-spacing:4px;
-      margin:22px 0 14px;
-      color:rgba(156,34,42,.85);
-      text-transform:uppercase;
-    }
+  text-align:center;
+  font-family:var(--nikkei-font);
+  font-size:12px;
+  letter-spacing:5px;
+  margin:36px 0 14px; /* ⬅️ BAJA el texto */
+  color:rgba(156,34,42,.85);
+  text-transform:uppercase;
+}
+    @media (max-width:640px){
+  .banner-title{
+    margin-top:40px; /* ⬅️ altura de la flecha */
+  }
+}
+
 
     /* Slider (loop suave con JS) */
     .slider{
@@ -459,6 +465,7 @@
   </script>
 </body>
 </html>
+
 
 
 
