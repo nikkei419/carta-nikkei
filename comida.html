@@ -101,31 +101,25 @@
 
 
 /* BOTÓN DE MENÚ (3 líneas) */
- .menu{ display:flex; gap:14px; }
-    .menu a{ padding:8px 12px; border-radius:12px; transition:background .2s ease; }
-    .menu a:hover{ background:#1a1a1a; }
-    .cta{ background:var(--accent); color:#fff; padding:8px 12px; border-radius:12px; font-weight:700; }
+.menu-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ffffff;
+  border-radius:10px;
+  padding:6px 9px;
+  background:#0f0f0f;
+  color:#ffffff;
+  font-size:18px;
+  cursor:pointer;
+  transition:background .2s ease, border-color .2s ease, color .2s ease;
+}
 
-    .burger{
-      display:none;
-      border:1px solid #ffffff;
-      border-radius:10px;
-      padding:6px 9px;
-      background:#0f0f0f;
-      color:#ffffff;
-      font-size:18px;
-      cursor:pointer;
-    }
-    .burger:hover{
-      background:#1a1a1a;
-      border-color:#9C222A;
-      color:#9C222A;
-    }
-
-    @media (max-width:780px){
-      .menu{ display:none; }
-      .burger{ display:block; }
-    }
+.menu-icon:hover{
+  background:#1a1a1a;
+  border-color:#9C222A;
+  color:#9C222A;
+}
 
     .drawer{ display:none; }
     .drawer.open{ display:block; }
