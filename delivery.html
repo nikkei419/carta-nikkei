@@ -64,25 +64,32 @@
   }
 
   /* BOTÓN MENÚ (☰) */
-.menu-icon{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #ffffff;
-  border-radius:10px;
-  padding:6px 9px;
-  background:#0f0f0f;
-  color:#ffffff;
-  font-size:18px;
-  cursor:pointer;
-  transition:.2s;
-}
+.menu{ display:flex; gap:14px; }
+    .menu a{ padding:8px 12px; border-radius:12px; transition:background .2s ease; }
+    .menu a:hover{ background:#1a1a1a; }
+    .cta{ background:var(--accent); color:#fff; padding:8px 12px; border-radius:12px; font-weight:700; }
 
-.menu-icon:hover{
-  background:#1a1a1a;
-  border-color:#9C222A;
-  color:#9C222A;
-}
+    .burger{
+      display:none;
+      border:1px solid #ffffff;
+      border-radius:10px;
+      padding:6px 9px;
+      background:#0f0f0f;
+      color:#ffffff;
+      font-size:18px;
+      cursor:pointer;
+    }
+    .burger:hover{
+      background:#1a1a1a;
+      border-color:#9C222A;
+      color:#9C222A;
+    }
+
+    @media (max-width:780px){
+      .menu{ display:none; }
+      .burger{ display:block; }
+    }
+
     .drawer{ display:none; }
     .drawer.open{ display:block; }
     .drawer .sheet{ border-top:1px solid #1c1c1c; background:#0e0e0e; }
@@ -273,14 +280,22 @@
     <div class="wrap">
 
       <!-- Botón menú -->
-      <button class="menu-icon" id="burger" aria-label="Abrir menú">☰</button>
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="sheet">
-    <a href="comida.html" class="drawer-link">Comida</a>
-    <a href="bebestibles.html" class="drawer-link">Bebestibles</a>
-    <a href="delivery.html" class="drawer-link">Delivery</a>
-  </div>
-</div>
+         <nav class="menu" aria-label="Principal">
+        <a href="comida.html">Comida</a>
+        <a href="bebestibles.html">Bebestibles</a>
+        <a href="delivery.html" class="cta">Delivery</a>
+      </nav>
+
+      <button class="burger" aria-label="Abrir menú" id="burger">☰</button>
+    </div>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="sheet">
+        <a href="comida.html" class="drawer-link">Comida</a>
+        <a href="bebestibles.html" class="drawer-link">Bebestibles</a>
+        <a href="delivery.html" class="drawer-link">Delivery</a>
+      </div>
+    </div>
 
       <!-- Logo centrado -->
       <div class="center-logo">
@@ -365,29 +380,47 @@
     </div>
   </footer>
 
-<script>
-  const burger = document.getElementById('burger');
-  const drawer = document.getElementById('drawer');
+ <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  function toggleDrawer(force){
-    const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
-    drawer.classList.toggle('open', open);
-    drawer.setAttribute('aria-hidden', String(!open));
-  }
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
 
-  burger.addEventListener('click', () => toggleDrawer());
+    function toggleDrawer(force){
+      const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', String(!open));
+    }
 
-  document.querySelectorAll('.drawer-link').forEach(a => {
-    a.addEventListener('click', () => toggleDrawer(false));
-  });
+    burger.addEventListener('click', () => toggleDrawer());
+    document.querySelectorAll('.drawer-link').forEach(a => {
+      a.addEventListener('click', () => toggleDrawer(false));
+    });
 
-  document.addEventListener('click', (e) => {
-    if (!drawer.classList.contains('open')) return;
-    const clickedInside = drawer.contains(e.target) || burger.contains(e.target);
-    if (!clickedInside) toggleDrawer(false);
-  });
-</script>
+    const track = document.getElementById("promoSlides");
+    const imgs  = track.querySelectorAll("img");
+    const total = imgs.length;
+    let index = 0;
 
+    function go(i, animate = true){
+      track.style.transition = animate ? "transform 650ms ease-in-out" : "none";
+      track.style.transform = `translateX(-${i * 100}%)`;
+    }
+
+    go(0, false);
+
+    setInterval(() => {
+      index++;
+      go(index, true);
+
+      if(index === total - 1){
+        setTimeout(() => {
+          index = 0;
+          go(index, false);
+        }, 700);
+      }
+    }, 4500);
+ </script>
 
 </body>
 </html>
