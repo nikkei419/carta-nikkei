@@ -194,24 +194,32 @@
     .btn.primary{ background:#9C222A; border-color:#9C222A; }
 
     /* Card promo */
-    .card{
-      background:var(--card);
-      border:1px solid #1b1b1b;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      margin-top:-12px;
-    }
+ .card{
+  background:var(--card);
+  border:1px solid #1b1b1b;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  margin-top:-6px;
+  padding-top:18px; /* ⬅️ BAJA TODO EL CONTENIDO SUPERIOR */
+}
+    @media (max-width:640px){
+  .card{
+    padding-top:22px;
+  }
+}
 
-    .banner-title{
+
+   .banner-title{
   text-align:center;
   font-family:var(--nikkei-font);
   font-size:12px;
   letter-spacing:5px;
-  margin:36px 0 14px; /* ⬅️ BAJA el texto */
+  margin:0 0 14px; /* ⬅️ ya no empujamos desde acá */
   color:rgba(156,34,42,.85);
   text-transform:uppercase;
 }
+
     @media (max-width:640px){
   .banner-title{
     margin-top:40px; /* ⬅️ altura de la flecha */
@@ -465,6 +473,7 @@
   </script>
 </body>
 </html>
+
 
 
 
