@@ -138,6 +138,25 @@
     .hero h2{ font-size:40px; margin:0 0 8px; }
     .hero p{ margin:0 0 18px; color:var(--soft); }
 
+    .hero-logo{
+  margin:6px 0 10px;
+}
+
+.hero-logo img{
+  max-width:260px;     /* tamaño desktop */
+  width:100%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));
+}
+
+@media (max-width:640px){
+  .hero-logo img{
+    max-width:220px;   /* tamaño móvil */
+  }
+}
+
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -297,7 +316,10 @@
 
         <div>
           <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
-          <h2 id="tit"><span class="nikkei">NIKKEI 419</span></h2>
+         <div class="hero-logo" id="tit">
+  <img src="logo-hero.png" alt="NIKKEI 419">
+</div>
+
           <p>Experimenta una fusión de sabores.</p>
 
           <div class="actions">
@@ -430,6 +452,7 @@
   </script>
 </body>
 </html>
+
 
 
 
