@@ -349,7 +349,9 @@
       <div class="hero-grid">
 
         <div>
-          <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
+          <div class="pill" id="horarioHoy" aria-label="abierto hoy">
+  ✨ Abierto hoy — cargando horario…
+</div>
 
           <div class="hero-logo" id="tit">
             <img src="logos/logotipo4.png" alt="NIKKEI 419">
@@ -478,7 +480,30 @@
       }
     }, 4500);
   </script>
+  <script>
+  const horarios = {
+    0: "13:00 a 21:30",              // Domingo
+    1: "Cerrado",        // Lunes
+    2: "13:00 a 22:00",        // Martes
+    3: "13:00 a 23:00",        // Miércoles
+    4: "13:00 a 23:00",        // Jueves
+    5: "13:00 a 00:00",        // Viernes
+    6: "13:00 a 00:00"         // Sábado
+  };
+
+  const hoy = new Date().getDay(); // 0 = domingo
+  const horario = horarios[hoy];
+  const el = document.getElementById("horarioHoy");
+
+  if (horario === "Cerrado") {
+    el.textContent = "⛔ Hoy cerrado";
+  } else {
+    el.textContent = `✨ Abierto hoy — ${horario}`;
+  }
+</script>
+
 </body>
 </html>
+
 
 
