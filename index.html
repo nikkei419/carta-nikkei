@@ -85,7 +85,7 @@
     .drawer a{display:block; padding:14px 20px; border-bottom:1px solid #161616}
 
     /* Hero */
-    .hero{max-width:1100px; margin:0 auto; padding:18px 20px 16px}
+    .hero{max-width:1100px; margin:0 auto; padding:42px 20px 18px}
     .hero-card{
       background:
         radial-gradient(1200px 500px at 80% -10%, rgba(150,34,42,.18), transparent),
@@ -105,7 +105,8 @@
       border:1px solid #1e1e1e;
       border-radius:999px;
       font-size:13px;
-      color:#d9d9d9
+      color:#d9d9d9;
+      margin.top:-6px;
     }
     .actions{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
@@ -127,7 +128,7 @@
     .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     @media (max-width: 980px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
     @media (max-width: 620px){.cards{grid-template-columns:1fr}}
-    .card{background:var(--card); border:1px solid #1b1b1b; border-radius:18px; overflow:hidden; box-shadow:var(--shadow)}
+    .card{background:var(--card); border:1px solid #1b1b1b; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-top:-12px;}
     .card .cover{height:130px; background:#151515; display:flex; align-items:center; justify-content:center}
     .card .cover span{opacity:.6}
     .card .body{padding:14px}
@@ -420,6 +421,7 @@
   </script>
 </body>
 </html>
+
 
 
 
