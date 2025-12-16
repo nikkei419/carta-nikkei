@@ -52,7 +52,7 @@
     .menu{display:flex; gap:14px}
     .menu a{padding:8px 12px; border-radius:12px; transition:background .2s ease}
     .menu a:hover{background:#1a1a1a}
-    .cta{background:var(--accent); color:#0a0a0a; padding:8px 12px; border-radius:12px; font-weight:700}
+    .cta{background:var(--accent); color:#ffffff; padding:8px 12px; border-radius:12px; font-weight:700}
 
     .burger{
       display:none;
@@ -210,11 +210,30 @@
   opacity: 0; /* Añadimos opacidad al ciclo para no ver duplicados */
 }
 
-@keyframes slide4 {
-  0%, 20%   { transform: translateX(0%); }
-  25%, 45%  { transform: translateX(-25%); }
-  50%, 70%  { transform: translateX(-50%); }
-  75%, 100% { transform: translateX(-75%); }
+/* ===== Slider Premium (loop suave) ===== */
+.slider{
+  position:relative;
+  overflow:hidden;
+  height:260px;
+  border-radius:18px;
+}
+@media (min-width: 640px){
+  .slider{ height:320px; }
+}
+
+.slides{
+  display:flex;
+  height:100%;
+  will-change: transform;
+}
+
+.slides img{
+  width:100%;
+  height:100%;
+  flex:0 0 100%;
+  object-fit:contain;     /* no recorta */
+  object-position:center;
+  background:#0a0a0a;
 }
 
   </style>
@@ -256,7 +275,7 @@
         <div>
           <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
           <h2 id="tit"><span class="nikkei">NIKKEI 419</span></h2>
-          <p>Experimenta una fusion de sabores.</p>
+          <p>Experimenta una fusión de sabores.</p>
           <div class="actions">
             <a class="btn primary" href="comida.html">Ver comida</a>
             <a class="btn" href="bebestibles.html">Bebestibles</a>
@@ -269,20 +288,18 @@
             <p class="banner-title">Solo por diciembre</p>
 
             <!-- Slider (sin .cover) -->
-            <div class="slider">
-              <div class="slides">
-                <img src="promo/chile.jpg" alt="40 chile">
-                <img src="promo/cenco.jpg" alt="40 cenco">
-                <img src="promo/3x2.jpg" alt="Sushi 3x2">
-                <img src="promo/happy.jpg" alt="happy hour">
-              </div>
-            </div>
+           <div class="slider" id="promoSlider">
+  <div class="slides" id="promoSlides">
+    <img src="promo/chile.jpg" alt="40 chile">
+    <img src="promo/cenco.jpg" alt="40 cenco">
+    <img src="promo/3x2.jpg" alt="Sushi 3x2">
+    <img src="promo/happy.jpg" alt="Happy hour">
+    <img src="promo/chile.jpg" alt="" aria-hidden="true"> <!-- duplicada para loop suave -->
+  </div>
+</div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+   </div>
+      </section>
 
   <!-- About / Historia -->
   <section class="about" aria-labelledby="title-historia">
@@ -290,7 +307,7 @@
       <span class="pill">Nuestra historia</span>
       <h3 id="title-historia">NIKKEI 419</h3>
       <p>
-        Somos un restaurant de sushi ubicado en el corazón de Viña del mar con mas de 20 años de trayectoria nos destacamos por nuestra dedicacion, profesionalismo y siempre tener productos de primera calidad.
+        Somos un restaurante de sushi ubicado en el corazón de Viña del Mar. Con más de 20 años de trayectoria, nos destacamos por nuestra dedicación, profesionalismo y productos de primera calidad.
       </p>
     </div>
   </section>
@@ -358,9 +375,39 @@
       "https://www.instagram.com/NIKKEI419"
     ]
   }
+    <script>
+  const slider = document.getElementById("promoSlider");
+  const track  = document.getElementById("promoSlides");
+  const slides = track.querySelectorAll("img");
+  const total  = slides.length; // incluye la duplicada
+  let index = 0;
+
+  function go(i, animate=true){
+    track.style.transition = animate ? "transform 650ms ease-in-out" : "none";
+    track.style.transform = `translateX(-${i * 100}%)`;
+  }
+
+  // arranque
+  go(0, false);
+
+  setInterval(() => {
+    index++;
+    go(index, true);
+
+    // si llegamos a la duplicada, volvemos a 0 sin que se note
+    if(index === total - 1){
+      setTimeout(() => {
+        index = 0;
+        go(index, false);
+      }, 700);
+    }
+  }, 4500);
+</script>
+
   </script>
 </body>
 </html>
+
 
 
 
