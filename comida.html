@@ -85,7 +85,7 @@
     background: rgba(10,10,10,0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
-    height: 60px;
+    height: 76px;
     display: flex;
     align-items: center;
   }
@@ -97,7 +97,7 @@
     width: 100%;
     padding: 0 16px;
     display: grid;
-    grid-template-columns: 40px 1fr 40px;
+    grid-template-columns: 54px 1fr 54px;
     align-items: center;
     height: 100%;
   }
@@ -170,7 +170,8 @@
 
   /* Tamaño del logo en general (mobile) */
   .center-logo img {
-    height: 48px;
+    height: 62px;
+    max-height:100%;
     width: auto;
     display: block;
     object-fit: contain;
@@ -180,8 +181,9 @@
   /* Un poco más grande en pantallas grandes */
   @media (min-width: 768px) {
     .center-logo img {
-      height: 52px;
-    }
+      .top{height: 80px;}
+      .wrap{ grid-template-columns: 58px 1fr 58px; }
+       .center-logo img{ height: 66px; }
   }
 
   /* Contenedor del botón */
