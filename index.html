@@ -11,7 +11,6 @@
   <meta property="og:image" content="logos/logo12.png" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- Fuente para el branding -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -39,7 +38,9 @@
 
     .nikkei{ font-family:var(--nikkei-font); font-weight:700; letter-spacing:.5px; }
 
-    /* Header */
+    /* =========================
+       HEADER
+    ========================== */
     .nav{
       position:sticky;
       top:0;
@@ -62,15 +63,14 @@
 
     .brand{ display:flex; align-items:center; gap:10px; }
     .brand img{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#9C222A;        /* por si hay transparencias */
-  border:1px solid #5e1418;  /* aro sutil premium */
-}
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      object-fit:cover;
+      background:#9C222A;
+      border:1px solid #5e1418;
+    }
     .brand-name{ font-family:var(--nikkei-font); font-weight:700; letter-spacing:.5px; }
-
     .spacer{ flex:1; }
 
     .menu{ display:flex; gap:14px; }
@@ -104,7 +104,9 @@
     .drawer .sheet{ border-top:1px solid #1c1c1c; background:#0e0e0e; }
     .drawer a{ display:block; padding:14px 20px; border-bottom:1px solid #161616; }
 
-    /* Hero */
+    /* =========================
+       HERO
+    ========================== */
     .hero{
       max-width:1100px;
       margin:0 auto;
@@ -113,26 +115,6 @@
     @media (max-width:640px){
       .hero{ padding-top:14px; }
     }
-
-    @media (max-width:640px){
-
-  /* Subimos todo el bloque del banner */
-  .card{
-    margin-top:-28px;   /* ⬅️ sube texto + imagen */
-  }
-
-  /* Compactamos la franja del título */
-  .banner-head{
-    height:38px;        /* antes muy alta */
-    padding-bottom:6px;
-  }
-
-  /* Subimos levemente el slider */
-  .slider{
-    margin-top:-8px;    /* ⬅️ acerca imagen al texto */
-  }
-
-}
 
     .hero-card{
       margin-top:-6px;
@@ -155,34 +137,21 @@
       .hero-grid{ grid-template-columns:1fr; }
     }
 
-    .hero h2{ font-size:40px; margin:0 0 8px; }
     .hero p{ margin:0 0 18px; color:var(--soft); }
 
- 
-/* HERO LOGO – versión definitiva */
-.hero-logo{
-  margin:8px 0 10px;
-  text-align:left; /* desktop */
-}
-
-.hero-logo img{
-  height:68px;     /* ⬅️ tamaño real, no se corta */
-  width:auto;
-  max-width:100%;
-  display:inline-block;
-  opacity:0.95;
-}
-
-/* Móvil: centrado y un poco más chico */
-@media (max-width:980px){
-  .hero-logo{
-    text-align:center;
-  }
-  .hero-logo img{
-    height:56px;
-  }
-}
-
+    /* HERO LOGO */
+    .hero-logo{ margin:8px 0 10px; text-align:left; }
+    .hero-logo img{
+      height:68px;
+      width:auto;
+      max-width:100%;
+      display:inline-block;
+      opacity:.95;
+    }
+    @media (max-width:980px){
+      .hero-logo{ text-align:center; }
+      .hero-logo img{ height:56px; }
+    }
 
     .pill{
       display:inline-flex;
@@ -213,66 +182,47 @@
     .btn:hover{ background:#181818; }
     .btn.primary{ background:#9C222A; border-color:#9C222A; }
 
-    /* Card promo */
- .card{
-  background:var(--card);
-  border:1px solid #1b1b1b;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  margin-top:-16px;
-}
-    @media (max-width:640px){
-  .card{
-    padding-top:22px;
-  }
-}
-    
-.banner-head{
-  height:44px;                 /* ⬅️ “baja” el texto sin dejar espacios raros */
-  display:flex;
-  align-items:flex-end;         /* queda más abajo dentro de la franja */
-  justify-content:center;
-  padding-bottom:10px;          /* ajuste fino */
-}
-@media (max-width:640px){
-  .banner-head{
-    height:50px;
-    padding-bottom:12px;
-  }
-}
+    /* =========================
+       PROMO CARD (NO CAMBIA ESTÉTICA)
+    ========================== */
+    .card{
+      background:var(--card);
+      border:1px solid #1b1b1b;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-top:-16px;
+    }
 
-   .banner-title{
-  margin:0;
-  text-align:center;
-  font-family:var(--nikkei-font);
-  font-size:12px;
-  letter-spacing:5px;
-  margin:0 0 14px; /* ⬅️ ya no empujamos desde acá */
-  color:rgba(156,34,42,.85);
-  text-transform:uppercase;
-}
+    /* Banner head (texto) */
+    .banner-head{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 0 10px; /* base */
+    }
 
-    @media (max-width:640px){
-  .banner-title{
-    margin-top:40px; /* ⬅️ altura de la flecha */
-  }
-}
+    .banner-title{
+      margin:0;
+      text-align:center;
+      font-family:var(--nikkei-font);
+      font-size:12px;
+      letter-spacing:5px;
+      color:rgba(156,34,42,.85);
+      text-transform:uppercase;
+      opacity:.9;
+    }
 
-
-    /* Slider (loop suave con JS) */
+    /* Slider */
     .slider{
       position:relative;
       overflow:hidden;
-      height:260px;            /* móvil */
+      height:260px;          /* móvil base */
       border-radius:18px;
       background:#0a0a0a;
-      margin-top:-16px;
     }
     @media (min-width:640px){
-      .slider{ height:320px; 
-             margin-top:-44px;} 
-      
+      .slider{ height:320px; }
     }
 
     .slides{
@@ -286,12 +236,37 @@
       flex:0 0 100%;
       width:100%;
       height:100%;
-      object-fit:contain;      /* NO recorta */
+      object-fit:contain;     /* NO recorta */
       object-position:center;
       background:#0a0a0a;
     }
 
-    /* About */
+    /* =========================
+       ✅ ÚLTIMO AJUSTE: SOLO CELULAR
+       - subir banner-head (texto)
+       - "agrandar para arriba" el slider (sin hacerlo más grande)
+    ========================== */
+    @media (max-width:640px){
+
+      /* sube un poco el texto (sin cambiar card) */
+      .banner-head{
+        padding:10px 0 6px;
+      }
+
+      /* el truco: mover el slider hacia arriba SIN cambiar height */
+      .slider{
+        top:-18px;              /* ⬅️ sube el slider */
+      }
+
+      /* compensación para que no se “corte” abajo */
+      .card{
+        padding-bottom:18px;    /* ⬅️ mantiene la altura visual igual */
+      }
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
     .about{
       background:linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
       border-top:1px solid #151515;
@@ -306,7 +281,9 @@
     .about h3{ font-size:26px; margin:4px 0 8px; }
     .about p{ color:#d4d4d4; line-height:1.7; }
 
-    /* Footer */
+    /* =========================
+       FOOTER
+    ========================== */
     footer{ border-top:1px solid #1b1b1b; background:#0a0a0a; }
     .footer{
       max-width:1100px;
@@ -338,7 +315,6 @@
 </head>
 
 <body>
-  <!-- Header / Navigation -->
   <header class="nav" role="banner">
     <div class="nav-wrap">
       <a class="brand" href="#inicio" aria-label="Inicio">
@@ -366,16 +342,16 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" aria-labelledby="tit" id="inicio">
     <div class="hero-card">
       <div class="hero-grid">
 
         <div>
           <div class="pill" aria-label="abierto hoy">✨ Abierto hoy — 13:00 a 23:00</div>
-         <div class="hero-logo" id="tit">
-  <img src="logos/logotipo4.png" alt="NIKKEI 419">
-</div>
+
+          <div class="hero-logo" id="tit">
+            <img src="logos/logotipo4.png" alt="NIKKEI 419">
+          </div>
 
           <p>Experimenta una fusión de sabores.</p>
 
@@ -388,9 +364,9 @@
 
         <div>
           <div class="card" aria-hidden="true">
-           <div class="banner-head">
-            <p class="banner-title">Solo por diciembre</p>
-           </div>
+            <div class="banner-head">
+              <p class="banner-title">Solo por diciembre</p>
+            </div>
 
             <div class="slider" id="promoSlider">
               <div class="slides" id="promoSlides">
@@ -399,10 +375,9 @@
                 <img src="promo/3x2.jpg" alt="Sushi 3x2">
                 <img src="promo/happy.jpg" alt="Happy hour">
                 <!-- duplicada para loop suave -->
-                <img src="promo/chile.png" alt="" aria-hidden="true">
+                <img src="promo/chile.jpg" alt="" aria-hidden="true">
               </div>
             </div>
-
           </div>
         </div>
 
@@ -410,7 +385,6 @@
     </div>
   </section>
 
-  <!-- About / Historia -->
   <section class="about" aria-labelledby="title-historia">
     <div class="about-wrap">
       <span class="pill">Nuestra historia</span>
@@ -421,7 +395,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer role="contentinfo">
     <div class="footer">
       <div class="foot-row">
@@ -445,7 +418,6 @@
     </div>
   </footer>
 
-  <!-- Datos estructurados -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -463,12 +435,9 @@
   }
   </script>
 
-  <!-- JS único -->
   <script>
-    // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile drawer
     const burger = document.getElementById('burger');
     const drawer = document.getElementById('drawer');
 
@@ -483,10 +452,9 @@
       a.addEventListener('click', () => toggleDrawer(false));
     });
 
-    // Slider loop suave
     const track = document.getElementById("promoSlides");
     const imgs  = track.querySelectorAll("img");
-    const total = imgs.length; // incluye la duplicada
+    const total = imgs.length;
     let index = 0;
 
     function go(i, animate = true){
@@ -500,7 +468,6 @@
       index++;
       go(index, true);
 
-      // cuando llega a la duplicada, vuelve a 0 sin animación
       if(index === total - 1){
         setTimeout(() => {
           index = 0;
@@ -511,29 +478,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
