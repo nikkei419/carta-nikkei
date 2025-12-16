@@ -139,26 +139,28 @@
     .hero p{ margin:0 0 18px; color:var(--soft); }
 
  
+/* HERO LOGO: desktop izquierda, móvil centrado */
 .hero-logo{
-  margin:6px 0 6px; /* un poco más compacto */
-  display:flex;
-  justify-content:center;
+  margin:8px 0 10px;
+  text-align:left;          /* ⬅️ desktop: izquierda */
 }
 
 .hero-logo img{
-  max-width:150px;  /* ⬅️ ACHICADO (antes 260) */
-  width:130%;
-  height:auto;
-  display:block;
+  height:44px;              /* ⬅️ achicado (control real) */
+  width:auto;
+  max-width:100%;
+  display:inline-block;
   opacity:0.95;
-  transform:scale(0.9);
-  transform-origin:left center;
+  clip-path: inset(12% 10% 12% 10%)
 }
 
-
-@media (max-width:640px){
+/* Móvil / 1 columna: centrado */
+@media (max-width:980px){
+  .hero-logo{
+    text-align:center;      /* ⬅️ móvil: centrado */
+  }
   .hero-logo img{
-    max-width:180px;   /* tamaño móvil */
+    height:40px;            /* ⬅️ aún más chico en móvil */
   }
 }
 
@@ -458,6 +460,7 @@
   </script>
 </body>
 </html>
+
 
 
 
