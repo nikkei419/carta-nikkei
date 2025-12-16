@@ -39,7 +39,7 @@
       backdrop-filter:saturate(140%) blur(8px);
       background:rgba(10,10,10,.6);
       border-bottom:1px solid #1c1c1c
-      .nav{ min-height:56px; /* controla la altura real */
+      min-height:56px; /* controla la altura real */
 }
 
     }
@@ -106,7 +106,7 @@
       border-radius:999px;
       font-size:13px;
       color:#d9d9d9;
-      margin.top:-6px;
+      margin-top:-6px;
     }
     .actions{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
@@ -368,29 +368,49 @@
   </script>
 
   <!-- SEO / Datos estructurados (opcional) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "NIKKEI 419",
-    "url": "https://tudominio.com",
-    "image": "https://tudominio.com/logo.png",
-    "servesCuisine": ["Casera", "De temporada"],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "San Martin 421, Viña del mar",
-      "addressLocality": "Ciudad",
-      "addressRegion": "Región",
-      "postalCode": "000000",
-      "addressCountry": "CL"
-    },
-    "telephone": "+56 9 1234 5678",
-    "sameAs": [
-      "https://www.instagram.com/NIKKEI419"
-    ]
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "NIKKEI 419",
+  "url": "https://tudominio.com",
+  "image": "https://tudominio.com/logo.png",
+  "servesCuisine": ["Casera", "De temporada"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "San Martin 421, Viña del mar",
+    "addressLocality": "Ciudad",
+    "addressRegion": "Región",
+    "postalCode": "000000",
+    "addressCountry": "CL"
+  },
+  "telephone": "+56 9 1234 5678",
+  "sameAs": [
+    "https://www.instagram.com/NIKKEI419"
+  ]
+}
+</script>
+
+<script>
+  // Año dinámico
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile drawer
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+
+  function toggleDrawer(force){
+    const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
   }
-    <script>
-  const slider = document.getElementById("promoSlider");
+
+  burger.addEventListener('click', () => toggleDrawer());
+  window.addEventListener('hashchange', () => toggleDrawer(false));
+</script>
+
+<script>
   const track  = document.getElementById("promoSlides");
   const slides = track.querySelectorAll("img");
   const total  = slides.length; // incluye la duplicada
@@ -401,14 +421,12 @@
     track.style.transform = `translateX(-${i * 100}%)`;
   }
 
-  // arranque
   go(0, false);
 
   setInterval(() => {
     index++;
     go(index, true);
 
-    // si llegamos a la duplicada, volvemos a 0 sin que se note
     if(index === total - 1){
       setTimeout(() => {
         index = 0;
@@ -421,6 +439,7 @@
   </script>
 </body>
 </html>
+
 
 
 
