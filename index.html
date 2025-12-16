@@ -139,28 +139,27 @@
     .hero p{ margin:0 0 18px; color:var(--soft); }
 
  
-/* HERO LOGO: desktop izquierda, móvil centrado */
+/* HERO LOGO – versión definitiva */
 .hero-logo{
   margin:8px 0 10px;
-  text-align:left;          /* ⬅️ desktop: izquierda */
+  text-align:left; /* desktop */
 }
 
 .hero-logo img{
-  height:44px;              /* ⬅️ achicado (control real) */
+  height:36px;     /* ⬅️ tamaño real, no se corta */
   width:auto;
   max-width:100%;
   display:inline-block;
   opacity:0.95;
-  clip-path: inset(12% 10% 12% 10%)
 }
 
-/* Móvil / 1 columna: centrado */
+/* Móvil: centrado y un poco más chico */
 @media (max-width:980px){
   .hero-logo{
-    text-align:center;      /* ⬅️ móvil: centrado */
+    text-align:center;
   }
   .hero-logo img{
-    height:40px;            /* ⬅️ aún más chico en móvil */
+    height:32px;
   }
 }
 
@@ -460,6 +459,7 @@
   </script>
 </body>
 </html>
+
 
 
 
