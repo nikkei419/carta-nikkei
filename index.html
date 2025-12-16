@@ -8,7 +8,7 @@
   <meta property="og:title" content="Restaurante — Carta Digital" />
   <meta property="og:description" content="Explora la carta de comida, bebestibles y nuestras opciones de delivery." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/logo1.png" />
+  <meta property="og:image" content="/logo12.png" />
   <meta name="theme-color" content="#000000" />
 
   <!-- Fuente para el branding -->
@@ -61,7 +61,14 @@
     }
 
     .brand{ display:flex; align-items:center; gap:10px; }
-    .brand img{ width:60px; height:60px; border-radius:50%; object-fit:cover; }
+    .brand img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#9C222A;        /* por si hay transparencias */
+  border:1px solid #5e1418;  /* aro sutil premium */
+}
     .brand-name{ font-family:var(--nikkei-font); font-weight:700; letter-spacing:.5px; }
 
     .spacer{ flex:1; }
@@ -259,7 +266,7 @@
   <header class="nav" role="banner">
     <div class="nav-wrap">
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <img src="logo1.png" alt="Logo NIKKEI 419">
+        <img src="logo12.png" alt="Logo NIKKEI 419">
         <span class="brand-name nikkei">NIKKEI 419</span>
       </a>
 
@@ -423,4 +430,5 @@
   </script>
 </body>
 </html>
+
 
