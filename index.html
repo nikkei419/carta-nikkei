@@ -201,16 +201,29 @@
   overflow:hidden;
   box-shadow:var(--shadow);
   margin-top:-6px;
-  padding-top:18px; /* ⬅️ BAJA TODO EL CONTENIDO SUPERIOR */
 }
     @media (max-width:640px){
   .card{
     padding-top:22px;
   }
 }
-
+    
+.banner-head{
+  height:44px;                 /* ⬅️ “baja” el texto sin dejar espacios raros */
+  display:flex;
+  align-items:flex-end;         /* queda más abajo dentro de la franja */
+  justify-content:center;
+  padding-bottom:10px;          /* ajuste fino */
+}
+@media (max-width:640px){
+  .banner-head{
+    height:50px;
+    padding-bottom:12px;
+  }
+}
 
    .banner-title{
+  margin:0;
   text-align:center;
   font-family:var(--nikkei-font);
   font-size:12px;
@@ -352,7 +365,9 @@
 
         <div>
           <div class="card" aria-hidden="true">
+           <div class="banner-head">
             <p class="banner-title">Solo por diciembre</p>
+           </div>
 
             <div class="slider" id="promoSlider">
               <div class="slides" id="promoSlides">
@@ -473,6 +488,7 @@
   </script>
 </body>
 </html>
+
 
 
 
