@@ -2756,6 +2756,7 @@ footer{
 
 
   // Búsqueda de platos
+// ✅ Normaliza texto (minúsculas + sin tildes)
 function normalizeText(text) {
   return (text || '')
     .toLowerCase()
@@ -2763,12 +2764,32 @@ function normalizeText(text) {
     .replace(/[\u0300-\u036f]/g, '');
 }
 
+// Búsqueda de platos
 if (searchInput) {
   searchInput.addEventListener('input', () => {
     const q = normalizeText(searchInput.value.trim());
-    ...
+
+    if (q.length > 0) {
+      // Mientras se busca, mostrar todas las secciones
+      sections.forEach(sec => sec.style.display = '');
+    } else {
+      // Sin texto: volvemos a la categoría activa
+      const activeCat = document.querySelector('.cat-item.active');
+      if (activeCat && activeCat.dataset.target) {
+        mostrarSeccion(activeCat.dataset.target);
+      }
+    }
+
+    cards.forEach(card => {
+      const name   = normalizeText(card.dataset.name);
+      const descEl = card.querySelector('.desc');
+      const desc   = normalizeText(descEl ? descEl.textContent : '');
+      const match  = !q || name.includes(q) || desc.includes(q);
+      card.style.display = match ? '' : 'none';
+    });
   });
 }
+
 
   // =============================
   // CATEGORÍAS (barra tipo La Birra)
