@@ -2742,6 +2742,12 @@ footer{
       }
     });
   }
+   searchInput.addEventListener('blur', () => {
+  if (searchInput.value.trim() !== '') {
+    searchBox.style.display = 'none';
+  }
+});
+
 
   // Búsqueda de platos
   if (searchInput) {
