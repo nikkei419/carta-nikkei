@@ -121,7 +121,16 @@
   color:#9C222A;
 }
 
-    .drawer{ display:none; }
+    .drawer{  
+  position: fixed;
+  top: 60px;               /* justo debajo del top bar */
+  left: 0;
+  width: 100%;
+  background: #0e0e0e;
+  border-top: 1px solid #1c1c1c;
+  display: none;
+  z-index: 999; 
+    }
     .drawer.open{ display:block; }
     .drawer .sheet{ border-top:1px solid #1c1c1c; background:#0e0e0e; }
     .drawer a{ display:block; padding:14px 20px; border-bottom:1px solid #161616; }
