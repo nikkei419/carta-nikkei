@@ -1068,30 +1068,39 @@ footer{
 
 
   // Búsqueda de platos
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase().trim();
+function normalizeText(text) {
+  return (text || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
 
-      if (q.length > 0) {
-        // Mientras se busca, mostrar todas las secciones
-        sections.forEach(sec => sec.style.display = '');
-      } else {
-        // Sin texto: volvemos a la categoría activa
-        const activeCat = document.querySelector('.cat-item.active');
-        if (activeCat && activeCat.dataset.target) {
-          mostrarSeccion(activeCat.dataset.target);
-        }
+// Búsqueda de platos
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const q = normalizeText(searchInput.value.trim());
+
+    if (q.length > 0) {
+      // Mientras se busca, mostrar todas las secciones
+      sections.forEach(sec => sec.style.display = '');
+    } else {
+      // Sin texto: volvemos a la categoría activa
+      const activeCat = document.querySelector('.cat-item.active');
+      if (activeCat && activeCat.dataset.target) {
+        mostrarSeccion(activeCat.dataset.target);
       }
+    }
 
-      cards.forEach(card => {
-        const name   = (card.dataset.name || '').toLowerCase();
-        const descEl = card.querySelector('.desc');
-        const desc   = descEl ? descEl.textContent.toLowerCase() : '';
-        const match  = !q || name.includes(q) || desc.includes(q);
-        card.style.display = match ? '' : 'none';
-      });
+    cards.forEach(card => {
+      const name   = normalizeText(card.dataset.name);
+      const descEl = card.querySelector('.desc');
+      const desc   = normalizeText(descEl ? descEl.textContent : '');
+      const match  = !q || name.includes(q) || desc.includes(q);
+      card.style.display = match ? '' : 'none';
     });
-  }
+  });
+}
+
 
   // =============================
   // CATEGORÍAS (barra tipo La Birra)
